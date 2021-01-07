@@ -2,11 +2,39 @@
 
 }
 
+h1 {
+}
+
+.dsig {
+  color: goldenrod;
+}
+
+.parchment {
+  color: red;
+}
+
+
+.book {
+  color: blue;
+}
+
+.song{
+  color: purple;
+}
+
+.class{
+  color: green;
+}
+
+
+
+
 
 h2 {
-  color: white;
+  color: red;
   position: absolute;
-  font-size: 80px;
+  left: 80px;
+  font-size: 60px;
 }
 
 .Metacryst {
@@ -16,11 +44,30 @@ h2 {
   color: red;
 }
 
-.line {
+.line1 {
   width: 600px;
   height: 0;
   top: 20%;
   transform: rotate(45deg);
+  border: 1px solid white;
+  position: absolute;
+}
+
+.line2 {
+  width: 600px;
+  height: 0;
+  top: 20%;
+  transform: rotate(270deg);
+  border: 1px solid white;
+  position: absolute;
+}
+
+.timeLine {
+  width: 800px;
+  height: 0;
+  left: 20vw;
+  top: 50vh;
+  transform: rotate(140deg);
   border: 1px solid white;
   position: absolute;
 }
