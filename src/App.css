@@ -7,47 +7,103 @@
 
 }
 
-h1 {
+a {
+  text-decoration: none;
 }
 
-.dsig {
-  color: goldenrod;
-}
-
-.parchment {
-  color: red;
-}
-
-
-.book {
-  color: blue;
-}
-
-.song{
-  color: purple;
-}
-
-.class{
-  color: green;
-}
-
-
-
-
+a:visited { text-decoration: none; color: black;}
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
 
 h2 {
-  color: red;
-  position: absolute;
-  left: 80px;
-  font-size: 60px;
+  font-size: 30px;
+  font-family:'Times New Roman', Times, serif;
 }
 
-.Metacryst {
+h1 {
+  font-size: 15px;
+  font-family:'Times New Roman', Times, serif;
+  left: 45%;
   position: absolute;
-  bottom: 30px;
-  right: 0px;
-  color: red;
 }
+
+h1:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+
+.name {
+  position: absolute;
+  left: 30px;
+}
+
+.zero {
+  top: 75px;
+}
+
+.one {
+  top: 150px;
+}
+
+.one:hover {
+  color: #3d6b1f;
+}
+
+.two {
+  top: 250px;
+}
+
+.three {
+  top: 300px;
+}
+
+.four {
+  top: 350px;
+}
+
+.five {
+  top: 400px;
+}
+
+.six {
+  top: 500px;
+}
+
+.seven {
+  top: 535px;
+}
+
+.eight {
+  top: 625px;
+}
+
+.nine {
+  top: 660px;
+}
+
+.ten {
+  top: 695px;
+}
+
+.eleven {
+  top: 790px;
+}
+
+.twelve {
+  top: 830px;
+}
+
+.thirteen {
+  top: 870px;
+}
+
+.fourteen {
+  top: 910px;
+}
+
+
 
 .line1 {
   width: 600px;
