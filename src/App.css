@@ -1,25 +1,113 @@
 
 
+
+
+
+
+
 .App {
 
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited { text-decoration: none; color: black;}
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
 
 h2 {
-  color: white;
-  position: absolute;
-  font-size: 80px;
+  font-size: 30px;
+  font-family:'Times New Roman', Times, serif;
 }
 
-.Metacryst {
+h1 {
+  font-size: 15px;
+  font-family:'Times New Roman', Times, serif;
+  left: 45%;
   position: absolute;
-  bottom: -30px;
-  right: 20px;
-  color: red;
-  font-size: 40px;
 }
 
-.line {
+h1:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+
+.name {
+  position: absolute;
+  left: 30px;
+}
+
+.zero {
+  top: 75px;
+}
+
+.one {
+  top: 150px;
+}
+
+.one:hover {
+  color: #3d6b1f;
+}
+
+.two {
+  top: 250px;
+}
+
+.three {
+  top: 300px;
+}
+
+.four {
+  top: 350px;
+}
+
+.five {
+  top: 400px;
+}
+
+.six {
+  top: 500px;
+}
+
+.seven {
+  top: 535px;
+}
+
+.eight {
+  top: 625px;
+}
+
+.nine {
+  top: 660px;
+}
+
+.ten {
+  top: 695px;
+}
+
+.eleven {
+  top: 790px;
+}
+
+.twelve {
+  top: 830px;
+}
+
+.thirteen {
+  top: 870px;
+}
+
+.fourteen {
+  top: 910px;
+}
+
+
+
+.line1 {
   width: 600px;
   height: 0;
   top: 20%;
@@ -27,4 +115,24 @@ h2 {
   border: 1px solid white;
   position: absolute;
 }
+
+.line2 {
+  width: 600px;
+  height: 0;
+  top: 20%;
+  transform: rotate(270deg);
+  border: 1px solid white;
+  position: absolute;
+}
+
+.timeLine {
+  width: 800px;
+  height: 0;
+  left: 20vw;
+  top: 50vh;
+  transform: rotate(140deg);
+  border: 1px solid white;
+  position: absolute;
+}
+
 
