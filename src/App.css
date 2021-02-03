@@ -1,13 +1,110 @@
 
 
-
-
-
-
-
-.App {
-
+ 
+body {
+  height: 100%;
 }
+
+/* 
+.App {
+  height: 100%; 
+  width: 100%;
+  position: fixed;
+} */
+
+
+
+.softwareCPRWrapper {
+  height: 100%; 
+  width: 100%;
+  position: fixed;
+}
+
+.softwareCPRName {
+  position: absolute;
+  left: 30px;
+}
+
+.softwareCPRName:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.softwareCPRInfo {
+  position: absolute;
+  color: black;
+  left: 186px;
+  /* top: 3px;
+  font-size: 28px; */
+}
+
+.softwareCPRLink {
+  position: absolute;
+  left: 595px;
+  color: #a23939;
+}
+
+.softwareCPRLink:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+.dsigWrapper {
+  height: 100%; 
+  width: 100%;
+  position: fixed;
+  background-color: #4b9b41;
+}
+
+.dsigName {
+  position: absolute;
+  left: 30px;
+  color: gold;
+}
+
+.dsigName:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.dsigInfo {
+  color: white;
+  font-weight: 800;
+  top: 400px;
+  left: 69vh;
+  position: absolute;
+}
+
+
+
+
+.parchmentInfo {
+  color: black;
+  font-weight: 800;
+  top: 400px;
+  left: 69vh;
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 a {
   text-decoration: none;
@@ -18,10 +115,26 @@ a:hover { text-decoration: none; }
 a:focus { text-decoration: none; }
 a:hover, a:active { text-decoration: none; }
 
+
 h2 {
   font-size: 30px;
   font-family:'Times New Roman', Times, serif;
 }
+
+.name {
+  position: absolute;
+  left: 30px;
+}
+
+.name:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+
+
+
+
 
 h1 {
   font-size: 15px;
@@ -35,11 +148,6 @@ h1:hover {
   cursor: pointer;
 }
 
-
-.name {
-  position: absolute;
-  left: 30px;
-}
 
 .zero {
   top: 75px;
@@ -104,6 +212,11 @@ h1:hover {
 .fourteen {
   top: 910px;
 }
+
+
+
+
+
 
 
 
