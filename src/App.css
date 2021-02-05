@@ -218,7 +218,7 @@ h1:hover {
 
 
 
-
+/* 
 
 .line1 {
   width: 600px;
@@ -236,16 +236,7 @@ h1:hover {
   transform: rotate(270deg);
   border: 1px solid white;
   position: absolute;
-}
+} */
 
-.timeLine {
-  width: 800px;
-  height: 0;
-  left: 20vw;
-  top: 50vh;
-  transform: rotate(140deg);
-  border: 1px solid white;
-  position: absolute;
-}
 
 

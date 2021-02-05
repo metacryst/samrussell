@@ -151,10 +151,9 @@ function App() {
       
       
       
-{/*       
-      <div className="line1"></div>
-      <div className="line2"></div>
-      <div className="timeLine"></div> */}
+      
+      {/* <div className="line1"></div>
+      <div className="line2"></div> */}
 
     </div>
   );
