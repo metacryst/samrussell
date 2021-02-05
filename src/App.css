@@ -84,6 +84,13 @@ body {
 
 
 
+
+
+
+
+
+
+
 .parchmentInfo {
   color: black;
   font-weight: 800;
@@ -91,6 +98,47 @@ body {
   left: 69vh;
   position: absolute;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.whoWillSurviveWrapper {
+  height: 100%; 
+  width: 100%;
+  position: fixed;
+  background-color: #f84949;
+}
+
+.title {
+  left: 15vw;
+  top: 15vh;
+  position: absolute;
+}
+
+.title:hover {
+  color: #4f4f4f;
+  cursor: pointer;
+}
+
+.whoWillSurviveInfo {
+  left: 40vw;
+  top: 40vh;
+  position: absolute;
+}
+
+
+
+
 
 
 

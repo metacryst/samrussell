@@ -29,7 +29,7 @@ function App() {
 									: Software Testing Engineer for
 								</h2>
                 <h2 className="softwareCPRLink" onClick={() => {
-                  window.location.href = 'https://softwarecpr.com/';
+                  window.open("https://softwarecpr.com/", "_blank")
                 }}>
 									softwareCPR
 								</h2>
@@ -71,12 +71,42 @@ function App() {
                   Sam Russell 
                 </h2>
 								<div className="parchmentInfo">
-									coming soon.
+									coming soon. A new Text Editor. 
 								</div>
 							</div>
 						);
 					}}
 				/>
+        
+        
+        <Route
+					path='/whowillsurvive'
+					exact={true}
+					render={() => {
+						return (
+							<div className="whoWillSurviveWrapper">
+                <h2 className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                <h2 className="title" onClick={() => {
+                  window.open("https://www.amazon.com/Who-Will-Survive-America-Capitalism/dp/1541389964", "_blank")
+                }}> 
+                  WHO WILL SURVIVE IN AMERICA
+                </h2>
+								<div className="whoWillSurviveInfo">
+                © December 2017 - a book about the 1970s Marxist theory of Late Capitalism, and why parts of the theory arose 50 years later. 
+								</div>
+							</div>
+						);
+					}}
+				/>
+        
+        
+        
+        
+        
         
       
       <Route
@@ -124,12 +154,19 @@ function App() {
                   [wip]
                 </h1>
                 
-                <h1 className="five"onClick={() => {
+                <h1 className="five" onClick={() => {
                   history.push('/parchment');
-                }}>~parchment</h1>
+                }}>
+                  ~parchment
+                </h1>
                 
                 
-                <h1 className="six">Who Will Survive in America</h1>
+                <h1 className="six" onClick={() => {
+                  history.push('/whowillsurvive');
+                }}
+                >
+                  Who Will Survive in America
+                </h1>
                 <h1 className="seven">Make America Great Again</h1>
                 
                 
