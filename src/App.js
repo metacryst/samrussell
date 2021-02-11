@@ -31,7 +31,7 @@ function App() {
                 <h2 className="softwareCPRLink" onClick={() => {
                   window.open("https://softwarecpr.com/", "_blank")
                 }}>
-									softwareCPR
+									softwareCPR, LLC
 								</h2>
 							</div>
 						);
@@ -163,14 +163,19 @@ function App() {
                 
                 <h1 className="six" onClick={() => {
                   history.push('/whowillsurvive');
-                }}
-                >
+                }}>
                   Who Will Survive in America
                 </h1>
+                
                 <h1 className="seven">Make America Great Again</h1>
                 
                 
-                <h1 className="eight">I saw my angels on a parking garage</h1>
+                <h1 className="eight" onClick={() => {
+                  window.open("https://play.spotify.com/track/2d9KBVxb6bUfVCjjv1JAVe&si=97844e7c84694bb6", "_blank")
+                }}>
+                    I saw my angels on a parking garage
+                </h1>
+                
                 <h1 className="nine">A Letter</h1>
                 <h1 className="ten">Zeus</h1>
                 

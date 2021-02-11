@@ -40,8 +40,21 @@ body {
 
 .softwareCPRLink {
   position: absolute;
-  left: 595px;
+  left: 26vw;
   color: #a23939;
+  font-size: 5vw;
+  font-family: Arial, Helvetica, sans-serif;
+  top: -4vh;
+  z-index: -1000;
+  /* transform: rotate(20deg); */
+}
+
+@media only screen and (max-width: 800px) {
+  .softwareCPRLink {
+    left: 25vw;
+    top: 13vh;
+    font-size: 5.5vh;
+  }
 }
 
 .softwareCPRLink:hover {
@@ -187,7 +200,7 @@ h2 {
 h1 {
   font-size: 15px;
   font-family:'Times New Roman', Times, serif;
-  left: 45%;
+  left: 45vw;
   position: absolute;
 }
 
@@ -198,67 +211,97 @@ h1:hover {
 
 
 .zero {
-  top: 75px;
+  top: 8vh;
 }
 
 .one {
-  top: 150px;
+  top: 14vh;
 }
 
 .one:hover {
   color: #3d6b1f;
 }
 
+
+
+
+
+
 .two {
-  top: 250px;
+  top: 25vh;
 }
 
 .three {
-  top: 300px;
+  top: 29vh;
 }
 
 .four {
-  top: 350px;
+  top: 33vh;
 }
 
 .five {
-  top: 400px;
+  top: 37vh;
 }
 
+
+
+
+
+
+
 .six {
-  top: 500px;
+  top: 48vh;
 }
 
 .seven {
-  top: 535px;
+  top: 52vh;
 }
 
+
+
+
+
+
+
 .eight {
-  top: 625px;
+  top: 62vh;
+}
+
+@media only screen and (max-width: 500px) {
+  .eight {
+    top: 59.5vh;
+  }
 }
 
 .nine {
-  top: 660px;
+  top: 65.7vh;
 }
 
 .ten {
-  top: 695px;
+  top: 69.5vh;
 }
 
+
+
+
+
+
+
+
 .eleven {
-  top: 790px;
+  top: 78vh;
 }
 
 .twelve {
-  top: 830px;
+  top: 82vh;
 }
 
 .thirteen {
-  top: 870px;
+  top: 86vh;
 }
 
 .fourteen {
-  top: 910px;
+  top: 90vh;
 }
 
 
