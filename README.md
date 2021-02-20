@@ -1,1 +1,1 @@
-# [samrussell.com]: <http://www.samrussell.com>
+# [samrussell.com](http://www.samrussell.com)
