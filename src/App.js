@@ -104,6 +104,56 @@ function App() {
 				/>
         
         
+        <Route
+					path='/maga'
+					exact={true}
+					render={() => {
+						return (
+							<div className="magaWrapper">
+                <h2 id="magaName" className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                <h2 className="magaTitle" onClick={() => {
+                  window.open("https://www.amazon.com/Make-America-Great-Again-Humanity/dp/1719549389/ref=sr_1_4?dchild=1&keywords=make+america+great+again+sam+russell&qid=1613865944&sr=8-4", "_blank")
+                }}> 
+                  MAKE AMERICA GREAT AGAIN
+                </h2>
+                <div className="magaInfo">
+                © June 2018 - a book about Kanye West's 2018 presidential campaign 
+								</div>
+							</div>
+						);
+					}}
+				/>
+        
+        <Route
+					path='/physics'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+                <h2 className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                <h2 className="physicsTitle" onClick={() => {
+                  window.open("https://www.amazon.com/Make-America-Great-Again-Humanity/dp/1719549389/ref=sr_1_4?dchild=1&keywords=make+america+great+again+sam+russell&qid=1613865944&sr=8-4", "_blank")
+                }}> 
+                  PHYSICS 201
+                </h2>
+                <div className="physicsInfo">
+                
+								</div>
+                <img className="physicsSchedule" src="/images/PhysicsSchedule.png"></img>
+							</div>
+						);
+					}}
+				/>
+        
+        
         
         
         
@@ -167,20 +217,37 @@ function App() {
                   Who Will Survive in America
                 </h1>
                 
-                <h1 className="seven">Make America Great Again</h1>
+                <h1 className="seven" onClick={() => {
+                  history.push('/maga');
+                }}>
+                  Make America Great Again
+                </h1>
                 
                 
                 <h1 className="eight" onClick={() => {
-                  window.open("https://play.spotify.com/track/2d9KBVxb6bUfVCjjv1JAVe&si=97844e7c84694bb6", "_blank")
+                  window.open("https://open.spotify.com/track/0zGnnrHUzxR8Y0jalflSHj?si=9045bf70159e40ab", "_blank")
                 }}>
                     I saw my angels on a parking garage
                 </h1>
                 
-                <h1 className="nine">A Letter</h1>
-                <h1 className="ten">Zeus</h1>
+                <h1 className="nine" onClick={() => {
+                  window.open("https://open.spotify.com/track/12S8FcPoIPcS7bbe8OYt4X?si=64191ef1a9924c47", "_blank")
+                }}>
+                  A Letter
+                </h1>
+                
+                <h1 className="ten" onClick={() => {
+                  window.open("https://open.spotify.com/track/3w7XruCEgS7lBY4WZ8msCy?si=73f5ce5ed94e4861", "_blank")
+                }}>
+                  Zeus
+                </h1>
                 
                 
-                <h1 className="eleven">Physics I</h1>
+                <h1 className="eleven" onClick={() => {
+                  history.push('/physics');
+                }}>
+                  Physics I
+                </h1>
                 <h1 className="twelve">Multivariable Calculus</h1>
                 <h1 className="thirteen">Linear Algebra</h1>
                 <h1 className="fourteen">Discrete Structures</h1>

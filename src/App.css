@@ -155,9 +155,70 @@ body {
 
 
 
+.magaWrapper {
+  height: 100%; 
+  width: 100%;
+  position: fixed;
+  background-color: white;
+}
+
+#magaName {
+  color: black;
+}
+
+#magaName:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.magaTitle {
+  left: 15vw;
+  top: 15vh;
+  position: absolute;
+  color: red;
+}
+
+.magaTitle:hover {
+  color: #4f4f4f;
+  cursor: pointer;
+}
+
+
+.magaInfo {
+  left: 40vw;
+  top: 40vh;
+  position: absolute;
+  color: blue;
+}
 
 
 
+
+
+
+
+
+
+.physicsTitle {
+  position: absolute;
+  right: 20vw;
+  top: 10vh;
+  font-size: 25px;
+}
+
+
+/*
+control size proportionally by tying width to vw and let height adjust based on that
+set minimum width so it stays a good size on smaller screens
+*/
+.physicsSchedule {
+  position: absolute;
+  right: 0vw;
+  bottom: 0vh;
+  width: 40vw;
+  height: auto;
+  min-width: 350px;
+}
 
 
 
