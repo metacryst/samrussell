@@ -364,19 +364,30 @@ h2 {
   left: 30px;
 }
 
-.name:hover {
-  color: grey;
-  cursor: pointer;
+@media only screen and (min-width: 500px) {
+  .name:hover {
+    color: grey;
+    cursor: pointer;
+  }
 }
+
+
 
 .email {
   position: absolute;
   left: 30px;
   top: 48px;
   font-weight: 400;
+  z-index: -1000;
 }
 
-
+@media only screen and (max-width: 500px) {
+  .email {
+    top: 24px;
+    right: 10px;
+    text-align: right;
+  }
+}
 
 
 
@@ -388,10 +399,14 @@ h1 {
   position: absolute;
 }
 
-h1:hover {
-  color: grey;
-  cursor: pointer;
-}
+
+@media only screen and (min-width: 500px) {
+  h1:hover {
+    color: grey;
+    cursor: pointer;
+  }
+ }
+
 
 
 .zero {
@@ -402,9 +417,12 @@ h1:hover {
   top: 14vh;
 }
 
-.one:hover {
-  color: #3d6b1f;
-}
+@media only screen and (min-width: 500px) {
+  .one:hover {
+    color: #3d6b1f;
+  }
+ }
+
 
 
 

@@ -336,7 +336,9 @@ function App() {
                 }}> 
                   Sam Russell 
                 </h2>
-                <h1 className="email">
+                <h1 className="email" onClick={() => {
+                  window.location.href = 'mailto:sam@samrussell.com';
+                }}>
                   sam@samrussell.com
                 </h1>
                 
