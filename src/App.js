@@ -139,21 +139,185 @@ function App() {
                 }}> 
                   Sam Russell
                 </h2>
-                <h2 className="physicsTitle" onClick={() => {
-                  window.open("https://www.amazon.com/Make-America-Great-Again-Humanity/dp/1719549389/ref=sr_1_4?dchild=1&keywords=make+america+great+again+sam+russell&qid=1613865944&sr=8-4", "_blank")
-                }}> 
-                  PHYSICS 201
+                <h2 className="physicsTitle"> 
+                  //      ____    __
+//     / __ \  / /_    __  __  _____  (_) _____  _____
+//    / /_/ / / __ \  / / / / / ___/ / / / ___/ / ___/
+//   / ____/ / / / / / /_/ / (__  ) / / / /__  (__  )
+//  /_/     /_/ /_/  \__, / /____/ /_/  \___/ /____/
+//                   /____/
                 </h2>
                 <div className="physicsInfo">
-                
+                  ENERGY
+                  <br></br>
+                  <br></br>
+                  mo t  i   o     n
+                  <br></br>
+                  <br></br>
+                  || forces ||
+                  <br></br>
+                  <br></br>
+                  --momentum-->
+                  <br></br>
+                  <br></br>
+                  fluids~~~
+                  <br></br>
+                  <br></br>
+                  ~waves~
+                  <br></br>
+                  <br></br>
+                  `gases`
 								</div>
-                <img className="physicsSchedule" src="/images/PhysicsSchedule.png"></img>
+							</div>
+						);
+					}}
+				/>
+        
+        <Route
+					path='/calculus'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+                <h2 className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                <h2 className="calcTitle"> 
+                  <pre>
+                  +------+.      +------+       +------+       +------+      .+------+<br></br>
+                  |`.    | `.    |\     |\      |      |      /|     /|    .' |    .'|<br></br>
+                  |  `+--+---+   | +----+-+     +------+     +-+----+ |   +---+--+'  |<br></br>
+                  |   |  |   |   | |    | |     |      |     | |    | |   |   |  |   |<br></br>
+                  +---+--+.  |   +-+----+ |     +------+     | +----+-+   |  .+--+---+<br></br>
+                  &nbsp;`. |    `.|    \|     \|     |      |     |/     |/    |.'    | .' <br></br>
+                  &nbsp;  `+------+     +------+     +------+     +------+     +------+'   <br></br>
+                  </pre>
+                </h2>
+                <div className="integrals">
+                  ∫∫∫∫∫∫∫∫∫∫∫∫∫∫
+								</div>
+                <div className="integrals" id="int2">
+                  ∫∫∫∫∫∫∫∫∫∫∫
+								</div>
+                <div className="integrals" id="int3">
+                  ∫∫∫∫∫∫∫∫∫∫∫
+								</div>
+                <div className="integrals" id="int4">
+                  ∫∫∫∫∫∫∫∫∫∫∫
+								</div>
+                <div className="integrals" id="int5">
+                  ∫∫∫∫∫∫∫∫∫∫∫
+								</div>
+                <div className="integrals" id="int6">
+                  ∫∫∫∫∫∫∫∫∫∫∫
+								</div>
+                <div className="integrals">
+                  ∫∫∫∫∫∫∫
+								</div>
+                <div className="lineIntegrals">
+                  ∮∮∮∮∮∮∮∮∮∮∮∮
+								</div>
+                <div className="info">
+                  partial differentiation -- 
+                  <br></br>
+                  3D graphing
+                  <br></br>
+                  gradients
+                  <br></br>
+                  directional derivatives
+                  <br></br>
+                  vector fields
+								</div>
+							</div>
+						);
+					}}
+				/>
+        
+        <Route
+					path='/linear'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+                <h2 className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                <h2 className="linearTitle"> 
+                <pre>
+                  1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  <span className="innerText">M A T R I X</span> 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  <span className="innerText">T R A N S F</span> 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 <span className="innerText">O</span> 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 <span className="innerText">R</span> 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 <span className="innerText">M</span> 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
+    
+                  </pre>
+                </h2>
 							</div>
 						);
 					}}
 				/>
         
         
+        <Route
+					path='/discrete'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+                <h2 className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                <h2 className="discreteTitle">
+                <pre>
+                You have just arrived on an island inhabited<br></br> 
+                by two kinds of people: knights who <br></br>
+                always tell the truth, and knaves who always lie.<br></br> 
+                Every inhabitant of the island is either <br></br>
+                a knight or a knave, and <br></br> 
+                everyone knows which inhabitants are knights <br></br> 
+                and which are knaves. You are <br></br> 
+                a stranger on the island, and you do not know <br></br>
+                who is a knight and who is a knave.<br></br>
+                
+                <br></br>
+                It is rumored that there is gold on the island. <br></br>
+                You ask an inhabitant if there really is <br></br>
+                gold on the island. <br></br>
+                He responds, “There is gold on this island if and<br></br>
+                only if I am a knight.”<br></br>
+                <br></br>
+                Is there gold on the island?<br></br>
+                </pre>
+                </h2>
+							</div>
+						);
+					}}
+				/>
         
         
         
@@ -248,9 +412,19 @@ function App() {
                 }}>
                   Physics I
                 </h1>
-                <h1 className="twelve">Multivariable Calculus</h1>
-                <h1 className="thirteen">Linear Algebra</h1>
-                <h1 className="fourteen">Discrete Structures</h1>
+                <h1 className="twelve" onClick={() => {
+                  history.push('/calculus');
+                }}>
+                  Multivariable Calculus
+                </h1>
+                <h1 className="thirteen" onClick={() => {
+                  history.push('/linear');
+                }}>
+                  Linear Algebra
+                </h1>
+                <h1 className="fourteen" onClick={() => {
+                  history.push('/discrete');
+                }}>Discrete Structures</h1>
 							</>
 						);
 					}}
