@@ -369,6 +369,13 @@ h2 {
   cursor: pointer;
 }
 
+.email {
+  position: absolute;
+  left: 30px;
+  top: 48px;
+  font-weight: 400;
+}
+
 
 
 
