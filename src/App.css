@@ -1,5 +1,18 @@
 
 
+:root {
+	--padding: 15px 
+}
+
+@media screen and (min-width: 750px) {
+	:root {
+    --padding: 30px 
+  }
+}
+
+
+
+
  
 body {
   height: 100%;
@@ -388,6 +401,39 @@ h2 {
     text-align: right;
   }
 }
+
+
+.LinkedInLogo {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 30px;
+  top: 80px;
+}
+
+.GitHubLogo {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 60px;
+  top: 82px;
+}
+
+
+.LinkedInLogo:hover {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.GitHubLogo:hover {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+
+
+
+
 
 
 

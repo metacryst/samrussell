@@ -13,6 +13,135 @@ function App() {
   return (
     <div className="App">
       
+      
+      
+      
+      <Route
+					path='/'
+					exact={true}
+					render={() => {
+						return (
+							<>      
+                
+                <h2 className="name"> 
+                  Sam Russell 
+                </h2>
+                <h1 className="email" onClick={() => {
+                  window.location.href = 'mailto:sam@samrussell.com';
+                }}>
+                  sam@samrussell.com
+                </h1>
+                
+                <img className="GitHubLogo" src="/images/GitHubLogo.png" onClick={() => {
+                  window.open("https://www.github.com/metacryst/", "_blank")
+                }}></img>
+              
+                <img className="LinkedInLogo" src="/images/LinkedInLogo.png" onClick={() => {
+                  window.open("https://www.linkedin.com/in/sam--russell/", "_blank")
+                }}></img>
+              
+                
+                
+                
+                <h1 className="zero" onClick={() => {
+                  history.push('/softwareCPR');
+                }}>
+                  softwareCPR
+                </h1>
+
+                <h1 className="one" onClick={() => {
+                  history.push('/dsig');
+                }}>
+                  ΔΣΦ
+                </h1>
+                
+
+                <h1 className="two" onClick={() => {
+                  window.location.href = 'http://harvard--art.herokuapp.com/';
+                }}>
+                  "harvard art"
+                </h1>
+                
+                <h1 className="three" onClick={() => {
+                  window.location.href = 'http://paperclip--house.herokuapp.com/';
+                }}>
+                  paperclip//
+                </h1>
+                
+                <h1 className="four" onClick={() => {
+                  window.location.href = 'http://wip--gallery.herokuapp.com/';
+                }}>
+                  [wip]
+                </h1>
+                
+                <h1 className="five" onClick={() => {
+                  history.push('/parchment');
+                }}>
+                  ~parchment
+                </h1>
+                
+                
+                <h1 className="six" onClick={() => {
+                  history.push('/whowillsurvive');
+                }}>
+                  Who Will Survive in America
+                </h1>
+                
+                <h1 className="seven" onClick={() => {
+                  history.push('/maga');
+                }}>
+                  Make America Great Again
+                </h1>
+                
+                
+                <h1 className="eight" onClick={() => {
+                  window.open("https://open.spotify.com/track/0zGnnrHUzxR8Y0jalflSHj?si=9045bf70159e40ab", "_blank")
+                }}>
+                    I saw my angels on a parking garage
+                </h1>
+                
+                <h1 className="nine" onClick={() => {
+                  window.open("https://open.spotify.com/track/12S8FcPoIPcS7bbe8OYt4X?si=64191ef1a9924c47", "_blank")
+                }}>
+                  A Letter
+                </h1>
+                
+                <h1 className="ten" onClick={() => {
+                  window.open("https://open.spotify.com/track/3w7XruCEgS7lBY4WZ8msCy?si=73f5ce5ed94e4861", "_blank")
+                }}>
+                  Zeus
+                </h1>
+                
+                
+                <h1 className="eleven" onClick={() => {
+                  history.push('/physics');
+                }}>
+                  Physics I
+                </h1>
+                <h1 className="twelve" onClick={() => {
+                  history.push('/calculus');
+                }}>
+                  Multivariable Calculus
+                </h1>
+                <h1 className="thirteen" onClick={() => {
+                  history.push('/linear');
+                }}>
+                  Linear Algebra
+                </h1>
+                <h1 className="fourteen" onClick={() => {
+                  history.push('/discrete');
+                }}>Discrete Structures</h1>
+							</>
+						);
+					}}
+				/>
+      
+      
+      
+      
+      
+      
+      
       <Route
 					path='/softwareCPR'
 					exact={true}
@@ -323,120 +452,6 @@ function App() {
         
         
       
-      <Route
-					path='/'
-					exact={true}
-					render={() => {
-						return (
-							<>      
-                
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                  setBackground("#f8eadd")
-                }}> 
-                  Sam Russell 
-                </h2>
-                <h1 className="email" onClick={() => {
-                  window.location.href = 'mailto:sam@samrussell.com';
-                }}>
-                  sam@samrussell.com
-                </h1>
-                
-                
-                
-                
-                <h1 className="zero" onClick={() => {
-                  history.push('/softwareCPR');
-                }}>
-                  softwareCPR
-                </h1>
-
-                <h1 className="one" onClick={() => {
-                  history.push('/dsig');
-                }}>
-                  ΔΣΦ
-                </h1>
-                
-
-                <h1 className="two" onClick={() => {
-                  window.location.href = 'http://harvard--art.herokuapp.com/';
-                }}>
-                  "harvard art"
-                </h1>
-                
-                <h1 className="three" onClick={() => {
-                  window.location.href = 'http://paperclip--house.herokuapp.com/';
-                }}>
-                  paperclip//
-                </h1>
-                
-                <h1 className="four" onClick={() => {
-                  window.location.href = 'http://wip--gallery.herokuapp.com/';
-                }}>
-                  [wip]
-                </h1>
-                
-                <h1 className="five" onClick={() => {
-                  history.push('/parchment');
-                }}>
-                  ~parchment
-                </h1>
-                
-                
-                <h1 className="six" onClick={() => {
-                  history.push('/whowillsurvive');
-                }}>
-                  Who Will Survive in America
-                </h1>
-                
-                <h1 className="seven" onClick={() => {
-                  history.push('/maga');
-                }}>
-                  Make America Great Again
-                </h1>
-                
-                
-                <h1 className="eight" onClick={() => {
-                  window.open("https://open.spotify.com/track/0zGnnrHUzxR8Y0jalflSHj?si=9045bf70159e40ab", "_blank")
-                }}>
-                    I saw my angels on a parking garage
-                </h1>
-                
-                <h1 className="nine" onClick={() => {
-                  window.open("https://open.spotify.com/track/12S8FcPoIPcS7bbe8OYt4X?si=64191ef1a9924c47", "_blank")
-                }}>
-                  A Letter
-                </h1>
-                
-                <h1 className="ten" onClick={() => {
-                  window.open("https://open.spotify.com/track/3w7XruCEgS7lBY4WZ8msCy?si=73f5ce5ed94e4861", "_blank")
-                }}>
-                  Zeus
-                </h1>
-                
-                
-                <h1 className="eleven" onClick={() => {
-                  history.push('/physics');
-                }}>
-                  Physics I
-                </h1>
-                <h1 className="twelve" onClick={() => {
-                  history.push('/calculus');
-                }}>
-                  Multivariable Calculus
-                </h1>
-                <h1 className="thirteen" onClick={() => {
-                  history.push('/linear');
-                }}>
-                  Linear Algebra
-                </h1>
-                <h1 className="fourteen" onClick={() => {
-                  history.push('/discrete');
-                }}>Discrete Structures</h1>
-							</>
-						);
-					}}
-				/>
       
       
       
