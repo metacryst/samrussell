@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useHistory, Route, Link } from 'react-router-dom';
 
+import LinkedInLogo from "./images/LinkedInLogo.png";
+import GithubLogo from "./images/GithubLogo.png";
 
 function App() {
   
@@ -32,13 +34,16 @@ function App() {
                   sam@samrussell.com
                 </h1>
                 
-                <img className="GitHubLogo" src="/images/GitHubLogo.png" onClick={() => {
+                
+                <img className="LinkedInLogo" src={LinkedInLogo} onClick={() => {
+                  window.open("https://www.linkedin.com/in/sam--russell/", "_blank")
+                }}></img>
+                
+                <img className="GitHubLogo" src={GithubLogo} onClick={() => {
                   window.open("https://www.github.com/metacryst/", "_blank")
                 }}></img>
               
-                <img className="LinkedInLogo" src="/images/LinkedInLogo.png" onClick={() => {
-                  window.open("https://www.linkedin.com/in/sam--russell/", "_blank")
-                }}></img>
+                
               
                 
                 
