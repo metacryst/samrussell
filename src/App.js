@@ -4,10 +4,13 @@ import { useHistory, Route, Link } from 'react-router-dom';
 
 import LinkedInLogo from "./images/LinkedInLogo.png";
 import GithubLogo from "./images/GithubLogo.png";
-import Resume from "./English/Resume.pdf"
-import CoverLetter from "./English/CoverLetter.pdf"
-import JobInfo from "./English/JobInfo.pdf"
-import SkillsList from "./English/SkillsList.pdf"
+import Resume1 from "./English/Resume1.png"
+import Resume2 from "./English/Resume2.png"
+import CoverLetter from "./English/CoverLetter1.png"
+import JobInfo from "./English/JobInfo1.png"
+import SkillsList1 from "./English/SkillsList1.png"
+import SkillsList2 from "./English/SkillsList2.png"
+
 
 import { Document, Page } from 'react-pdf';
 
@@ -498,29 +501,19 @@ function App() {
                 </h2>
                 
                 <h1 className="JobInfo" onClick={() => {
-                  window.open(JobInfo, "_blank")
+                  history.push('/jobinfo')
                 }}>Job Info</h1>
                 
-                <Document
-                  file={"./English/JobInfo.pdf"}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                >
-                  <Page pageNumber={pageNumber} />
-                </Document>
-                <p>Page {pageNumber} of {numPages}</p>
-                
-                
-                
-                <a className="CoverLetter" onClick={() => {
-                  window.open(CoverLetter, "_blank")
-                }}>Cover Letter</a>
+                <h1 className="CoverLetter" onClick={() => {
+                  history.push('/coverletter')
+                }}>Cover Letter</h1>
                 
                 <h1 className="Resume" onClick={() => {
-                  window.open(GithubLogo, "_blank")
+                  history.push('/resume')
                 }}>Resume</h1>
                                 
                 <h1 className="SkillsList" onClick={() => {
-                  window.open(SkillsList, "_blank")
+                  history.push('/skillslist')
                 }}>Skills List</h1>
                 
 							</div>
@@ -528,6 +521,71 @@ function App() {
 					}}
 				/>
         
+        
+        
+        
+        <Route
+					path='/jobinfo'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+              
+                <img className="JobInfoImage" src={JobInfo} ></img>
+                
+							</div>
+						);
+					}}
+				/>
+        
+        <Route
+					path='/coverletter'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+              
+                <img className="CoverLetterImage" src={CoverLetter} ></img>
+                
+							</div>
+						);
+					}}
+				/>
+        
+        
+        <Route
+					path='/resume'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+              
+                <img className="Resume" src={Resume1} ></img>
+                <img className="Resume" src={Resume2} ></img>
+                
+							</div>
+						);
+					}}
+				/>
+        
+        <Route
+					path='/skillslist'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+              
+                <img className="SkillsList1" src={SkillsList1} ></img>
+                <img className="SkillsList2" src={SkillsList2} ></img>
+                
+							</div>
+						);
+					}}
+				/>
+        
+        
+        
+    
         
         
         
