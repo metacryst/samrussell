@@ -492,6 +492,13 @@ function App() {
                   window.open(JobInfo, "_blank")
                 }}>Job Info</h1>
                 
+                <embed
+                  src={JobInfo}
+                  type="application/pdf"
+                  height={800}
+                  width={500}
+                />
+                
                 <h1 className="CoverLetter" onClick={() => {
                   window.open(CoverLetter, "_blank")
                 }}>Cover Letter</h1>
