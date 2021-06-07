@@ -531,7 +531,7 @@ function App() {
 						return (
 							<div className="wrapper">
               
-                <img className="JobInfoImage" src={JobInfo} ></img>
+                <img className="JobInfoImage image" src={JobInfo} ></img>
                 
 							</div>
 						);
@@ -545,7 +545,7 @@ function App() {
 						return (
 							<div className="wrapper">
               
-                <img className="CoverLetterImage" src={CoverLetter} ></img>
+                <img className="CoverLetterImage image" src={CoverLetter} ></img>
                 
 							</div>
 						);
@@ -560,8 +560,8 @@ function App() {
 						return (
 							<div className="wrapper">
               
-                <img className="Resume" src={Resume1} ></img>
-                <img className="Resume" src={Resume2} ></img>
+                <img className="Resume image" src={Resume1} ></img>
+                <img className="Resume image" src={Resume2} ></img>
                 
 							</div>
 						);
@@ -575,8 +575,8 @@ function App() {
 						return (
 							<div className="wrapper">
               
-                <img className="SkillsList1" src={SkillsList1} ></img>
-                <img className="SkillsList2" src={SkillsList2} ></img>
+                <img className="SkillsList1 image" src={SkillsList1} ></img>
+                <img className="SkillsList2 image" src={SkillsList2} ></img>
                 
 							</div>
 						);
