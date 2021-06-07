@@ -4,6 +4,11 @@ import { useHistory, Route, Link } from 'react-router-dom';
 
 import LinkedInLogo from "./images/LinkedInLogo.png";
 import GithubLogo from "./images/GithubLogo.png";
+import Resume from "./English/Resume.pdf"
+import CoverLetter from "./English/CoverLetter.pdf"
+import JobInfo from "./English/JobInfo.pdf"
+import SkillsList from "./English/SkillsList.pdf"
+
 
 function App() {
   
@@ -62,7 +67,7 @@ function App() {
                 
 
                 <h1 className="two" onClick={() => {
-                  window.location.href = 'http://harvard--art.herokuapp.com/';
+                  window.open('http://harvard--art.herokuapp.com/', "_blank")
                 }}>
                   "harvard art"
                 </h1>
@@ -135,8 +140,22 @@ function App() {
                 </h1>
                 <h1 className="fourteen" onClick={() => {
                   history.push('/discrete');
-                }}>Discrete Structures</h1>
+                }}>Discrete Structures
+                </h1>
+                
+                
+                
+                
+                <h1 className="fifteen" onClick={() => {
+                  history.push('/application');
+                }}>
+                  Application Materials
+                </h1>
 							</>
+              
+              
+              
+              
 						);
 					}}
 				/>
@@ -448,6 +467,43 @@ function App() {
                 Is there gold on the island?<br></br>
                 </pre>
                 </h2>
+							</div>
+						);
+					}}
+				/>
+        
+        
+        
+        
+        <Route
+					path='/application'
+					exact={true}
+					render={() => {
+						return (
+							<div className="wrapper">
+              
+                <h2 className="name" onClick={() => {
+                  history.push('/')
+                }}> 
+                  Sam Russell
+                </h2>
+                
+                <h1 className="JobInfo" onClick={() => {
+                  window.open(JobInfo, "_blank")
+                }}>Job Info</h1>
+                
+                <h1 className="CoverLetter" onClick={() => {
+                  window.open(CoverLetter, "_blank")
+                }}>Cover Letter</h1>
+                
+                <h1 className="Resume" onClick={() => {
+                  window.open(Resume, "_blank")
+                }}>Resume</h1>
+                                
+                <h1 className="SkillsList" onClick={() => {
+                  window.open(SkillsList, "_blank")
+                }}>Skills List</h1>
+                
 							</div>
 						);
 					}}

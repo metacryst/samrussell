@@ -13,10 +13,236 @@
 
 
 
+
+
  
 body {
   height: 100%;
 }
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+a:visited { text-decoration: none; color: black;}
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+
+h2 {
+  font-size: 30px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.name {
+  position: absolute;
+  left: 30px;
+}
+
+@media only screen and (min-width: 500px) {
+  .name:hover {
+    color: grey;
+    cursor: pointer;
+  }
+}
+
+
+
+.email {
+  position: absolute;
+  left: 30px;
+  top: 48px;
+  font-weight: 400;
+  z-index: -1000;
+}
+
+@media only screen and (max-width: 500px) {
+  .email {
+    top: 24px;
+    right: 10px;
+    text-align: right;
+  }
+}
+
+
+.LinkedInLogo {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 30px;
+  top: 80px;
+}
+
+.GitHubLogo {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 32px;
+  top: 110px;
+}
+
+
+.LinkedInLogo:hover {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.GitHubLogo:hover {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+
+
+
+
+
+
+
+
+h1 {
+  font-size: 15px;
+  font-family:'Times New Roman', Times, serif;
+  left: 45vw;
+  position: absolute;
+}
+
+
+@media only screen and (min-width: 500px) {
+  h1:hover {
+    color: grey;
+    cursor: pointer;
+  }
+ }
+
+
+
+ 
+ 
+ 
+.zero {
+  top: 8vh;
+}
+
+.one {
+  top: 14vh;
+}
+
+@media only screen and (min-width: 500px) {
+  .one:hover {
+    color: #3d6b1f;
+  }
+ }
+
+
+
+
+
+
+
+.two {
+  top: 25vh;
+}
+
+.three {
+  top: 29vh;
+}
+
+.four {
+  top: 33vh;
+}
+
+.five {
+  top: 37vh;
+}
+
+
+
+
+
+
+
+.six {
+  top: 48vh;
+}
+
+.seven {
+  top: 52vh;
+}
+
+
+
+
+
+
+
+.eight {
+  top: 62vh;
+}
+
+@media only screen and (max-width: 500px) {
+  .eight {
+    top: 59.5vh;
+  }
+}
+
+.nine {
+  top: 65.7vh;
+}
+
+.ten {
+  top: 69.5vh;
+}
+
+
+
+
+
+
+
+
+.eleven {
+  top: 78vh;
+}
+
+.twelve {
+  top: 82vh;
+}
+
+.thirteen {
+  top: 86vh;
+}
+
+.fourteen {
+  top: 90vh;
+}
+
+
+
+
+.fifteen {
+  top: 140px;
+  left: 1000px;
+  transform: rotate(90deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 
 .App {
@@ -357,200 +583,28 @@ body {
 
 
 
-a {
-  text-decoration: none;
+
+
+
+
+
+
+.JobInfo {
+  top: 10vh;
 }
 
-a:visited { text-decoration: none; color: black;}
-a:hover { text-decoration: none; }
-a:focus { text-decoration: none; }
-a:hover, a:active { text-decoration: none; }
-
-
-h2 {
-  font-size: 30px;
-  font-family:'Times New Roman', Times, serif;
+.CoverLetter {
+  top: 20vh;
 }
 
-.name {
-  position: absolute;
-  left: 30px;
+.Resume {
+  top: 30vh;
 }
 
-@media only screen and (min-width: 500px) {
-  .name:hover {
-    color: grey;
-    cursor: pointer;
-  }
+.SkillsList {
+  top: 40vh;
 }
 
-
-
-.email {
-  position: absolute;
-  left: 30px;
-  top: 48px;
-  font-weight: 400;
-  z-index: -1000;
-}
-
-@media only screen and (max-width: 500px) {
-  .email {
-    top: 24px;
-    right: 10px;
-    text-align: right;
-  }
-}
-
-
-.LinkedInLogo {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  left: 30px;
-  top: 80px;
-}
-
-.GitHubLogo {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 60px;
-  top: 82px;
-}
-
-
-.LinkedInLogo:hover {
-  cursor: pointer;
-  transform: rotate(90deg);
-}
-
-.GitHubLogo:hover {
-  cursor: pointer;
-  transform: rotate(90deg);
-}
-
-
-
-
-
-
-
-
-
-h1 {
-  font-size: 15px;
-  font-family:'Times New Roman', Times, serif;
-  left: 45vw;
-  position: absolute;
-}
-
-
-@media only screen and (min-width: 500px) {
-  h1:hover {
-    color: grey;
-    cursor: pointer;
-  }
- }
-
-
-
-.zero {
-  top: 8vh;
-}
-
-.one {
-  top: 14vh;
-}
-
-@media only screen and (min-width: 500px) {
-  .one:hover {
-    color: #3d6b1f;
-  }
- }
-
-
-
-
-
-
-
-.two {
-  top: 25vh;
-}
-
-.three {
-  top: 29vh;
-}
-
-.four {
-  top: 33vh;
-}
-
-.five {
-  top: 37vh;
-}
-
-
-
-
-
-
-
-.six {
-  top: 48vh;
-}
-
-.seven {
-  top: 52vh;
-}
-
-
-
-
-
-
-
-.eight {
-  top: 62vh;
-}
-
-@media only screen and (max-width: 500px) {
-  .eight {
-    top: 59.5vh;
-  }
-}
-
-.nine {
-  top: 65.7vh;
-}
-
-.ten {
-  top: 69.5vh;
-}
-
-
-
-
-
-
-
-
-.eleven {
-  top: 78vh;
-}
-
-.twelve {
-  top: 82vh;
-}
-
-.thirteen {
-  top: 86vh;
-}
-
-.fourteen {
-  top: 90vh;
-}
 
 
 
