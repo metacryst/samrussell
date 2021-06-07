@@ -9,12 +9,21 @@ import CoverLetter from "./English/CoverLetter.pdf"
 import JobInfo from "./English/JobInfo.pdf"
 import SkillsList from "./English/SkillsList.pdf"
 
+import { Document, Page } from 'react-pdf';
+
 
 function App() {
   
   const [background, setBackground] = useState("")
   
   const history = useHistory();
+  
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
   
   
   return (
@@ -492,19 +501,22 @@ function App() {
                   window.open(JobInfo, "_blank")
                 }}>Job Info</h1>
                 
-                <embed
-                  src={JobInfo}
-                  type="application/pdf"
-                  height={800}
-                  width={500}
-                />
+                <Document
+                  file={"./English/JobInfo.pdf"}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                >
+                  <Page pageNumber={pageNumber} />
+                </Document>
+                <p>Page {pageNumber} of {numPages}</p>
                 
-                <h1 className="CoverLetter" onClick={() => {
+                
+                
+                <a className="CoverLetter" onClick={() => {
                   window.open(CoverLetter, "_blank")
-                }}>Cover Letter</h1>
+                }}>Cover Letter</a>
                 
                 <h1 className="Resume" onClick={() => {
-                  window.open(Resume, "_blank")
+                  window.open(GithubLogo, "_blank")
                 }}>Resume</h1>
                                 
                 <h1 className="SkillsList" onClick={() => {
