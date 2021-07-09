@@ -124,7 +124,7 @@ function App() {
 		// FOR PRODUCTION ONLY
     function onMouseMove() {
 		setTimeout(() => {
-			for(let i=0; i<20; i++) {
+			for(let i=0; i<10; i++) {
 			console.log('|')
 			console.log('|')
 			console.log('|')
