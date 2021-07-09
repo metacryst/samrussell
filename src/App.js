@@ -79,13 +79,13 @@ function App() {
                 
 
                 <h1 className="two" onClick={() => {
-                  window.open('http://harvard--art.herokuapp.com/', "_blank")
+                  window.open('https://harvard-art.samrussell.com/', "_blank")
                 }}>
                   "harvard art"
                 </h1>
                 
                 <h1 className="three" onClick={() => {
-                  window.open('http://paperclip--house.herokuapp.com/', "_blank");
+                  window.open('https://paperclip-house.samrussell.com/', "_blank");
                 }}>
                   paperclip//
                 </h1>
