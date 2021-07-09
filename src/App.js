@@ -16,7 +16,7 @@ function App() {
   const [error, setError] = useState('')
   
   function getartData() {    
-    const url = `https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&size=8&hasimage=1&apikey=${process.env.REACT_APP_KEY}`
+    const url = `https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&size=8&hasimage=1&apikey=${process.env.HARVARD_ART_KEY}`
         
     fetch(url)
       .then(response => response.json())
