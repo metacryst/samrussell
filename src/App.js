@@ -1,606 +1,926 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
-import { useHistory, Route, Link } from 'react-router-dom';
+import { Route, Link, useHistory } from 'react-router-dom';
+import './App.css';
 
-import LinkedInLogo from "./images/LinkedInLogo.png";
-import GithubLogo from "./images/GithubLogo.png";
-import Resume1 from "./English/Resume1.png"
-import Resume2 from "./English/Resume2.png"
-import CoverLetter from "./English/CoverLetter1.png"
-import JobInfo from "./English/JobInfo1.png"
-import SkillsList1 from "./English/SkillsList1.png"
-import SkillsList2 from "./English/SkillsList2.png"
+import About from './components/About.js';
+import Trade from './components/Trade.js';
+import User from './components/User.js';
+import Item from './components/Item.js';
+import Need from './components/Need.js';
 
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
-import { Document, Page } from 'react-pdf';
-
+import Cycle from './components/Cycle';
 
 function App() {
-  
-  const [background, setBackground] = useState("")
-  
-  const history = useHistory();
-  
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+	const [error, setError] = useState('');
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
-  
-  
-  return (
-    <div className="App">
-      
-      
-      
-      
-      <Route
+	// hooks for the display of every component in nav menu
+	const [hideUserOptions, setHideUserOptions] = useState(true);
+	const [hideSignIn, setHideSignIn] = useState(true);
+	const [hideSignUp, setHideSignUp] = useState(true);
+	const [hideAbout, setHideAbout] = useState(true);
+	const [hideTrade, setHideTrade] = useState(true);
+
+	const [hideInventory, setHideInventory] = useState(true);
+
+	//hook for display of the nav menu itself
+	const [hideNav, setHideNav] = useState(false);
+
+	// hooks for login and sign up
+	const [email, setEmail] = useState(null);
+	const [username, setUsername] = useState(null);
+	const [password, setPassword] = useState(null);
+	const [confirmPassword, setconfirmPassword] = useState(null);
+
+	const [isPasswordValid, setisPasswordValid] = useState(true);
+	const [isUserFound, setIsUserFound] = useState(true);
+
+	//hook for storing current user info
+	//ideally this would be in local storage so refreshing wouldn't break everything
+	const [userId, setUserId] = useState('');
+	const [completedUsername, setcompletedUsername] = useState(null);
+
+	//hook for trade options/link data/array of links with 0 value
+	const [tradeData, settradeData] = useState(['']);
+	const [tradeDataIndex, settradeDataIndex] = useState(0);
+
+	//hooks for user items screen
+	const [tierData, setTierData] = useState([]);
+	const [categoryData, setCategoryData] = useState([]);
+
+	const [itemData, setItemData] = useState([]);
+	const [newItemTier, setNewItemTier] = useState([]);
+	const [newItemCategory, setNewItemCategory] = useState([]);
+	const [newItemDescription, setNewItemDescription] = useState('');
+	const [addItemHidden, setAddItemHidden] = useState('hidden');
+
+	const [needData, setNeedData] = useState([]);
+	const [newNeedTier, setNewNeedTier] = useState([]);
+	const [newNeedCategory, setNewNeedCategory] = useState([]);
+	const [addNeedHidden, setAddNeedHidden] = useState('hidden');
+
+	
+	const [todoData, setTodoData] = useState([]);
+	const [cycleData, setCycleData] = useState([]);
+	
+	const [hideSignOut, setHideSignOut] = useState(true)
+
+	// function to handle display for each url
+	const history = useHistory();
+
+	useEffect(() => {
+		setHideSignOut(true)
+		return history.listen((location) => {
+			// console.log(location.pathname);
+			// console.log('useffecting');
+			// console.log(tradeData);
+			// settradeDataIndex(1)
+			// console.log(tradeDataIndex);
+
+			// eslint-disable-next-line default-case
+			switch (location.pathname) {
+				case '/':
+					setHideUserOptions(true);
+					setHideAbout(true);
+					setHideTrade(true);
+					setHideSignUp(true);
+					setHideSignIn(true);
+					setHideSignOut(true);
+					setHideNav(false);
+					break;
+
+				case '/user':
+					setHideUserOptions(false);
+					setHideNav(false);
+					setHideSignOut(true);
+					break;
+
+				case '/about':
+					setHideAbout(false);
+					setHideNav(true);
+					setHideSignOut(true);
+					break;
+
+				case '/trade':
+					setHideTrade(false);
+					setHideNav(true);
+					setHideSignOut(true);
+					break;
+
+				case '/signin':
+					setHideUserOptions(true);
+					setHideNav(true);
+					setHideSignIn(false);
+					setHideSignOut(true);
+					break;
+
+				case '/signup':
+					setHideUserOptions(true);
+					setHideNav(true);
+					setHideSignUp(false);
+					setHideSignOut(true);
+					break;
+
+				case `/${username}`: 
+					setcompletedUsername(username)
+					setUsername(null)
+					setHideNav(true)
+					setHideSignOut(true);
+					setHideInventory(false)
+					history.push(`/${completedUsername}`)
+					
+				case `/${completedUsername}`:
+					setHideNav(true)
+					setHideSignOut(true)
+					
+				case '/link':
+					setHideUserOptions(true);
+					setHideAbout(true);
+					setHideTrade(true);
+					setHideSignUp(true);
+					setHideSignIn(true);
+					setHideNav(true);
+					setHideNav(true);
+			}
+		});
+	}, [completedUsername, history, username]);
+
+	// BUG WORKAROUND FOR DEPLOYMENT, FIX THE FACT THAT REFRESH CHANGES STATE
+	window.onload = () => {
+		// console.log('window onloading');
+		if (window.location.pathname != '/') {
+			window.location.assign('/');
+		}
+	};
+
+	
+	function middleButtonClick() {
+		setHideNav(true);
+		setHideSignOut(false);
+	}
+	
+	function cornerButtonClick(event) {
+		if (event.target.getAttribute('name') === 'user') {
+			setHideUserOptions(false);
+		}
+		if (event.target.getAttribute('name') === 'about') {
+			setHideAbout(false);
+			setHideNav(true);
+		}
+		if (event.target.getAttribute('name') === 'trade') {
+			setHideTrade(false);
+			setHideNav(true);
+		}
+		if (event.target.getAttribute('name') === 'completedUsername') {
+			setHideInventory(false);
+			setHideNav(true);
+		}
+	}
+
+	// function to handle home button click
+	function paperclipButtonClick(event) {
+		if (event.target.getAttribute('name') === 'user') {
+			setHideUserOptions(true);
+			setHideNav(false);
+		}
+		if (event.target.getAttribute('name') === 'about') {
+			setHideAbout(true);
+			setHideNav(false);
+		}
+		if (event.target.getAttribute('name') === 'trade') {
+			setHideTrade(true);
+			setHideNav(false);
+		}
+	}
+
+	// A P I   I N T E R A C T I O N S
+	//
+	//
+	//
+	//
+	//
+	// A P I   I N T E R A C T I O N S
+	
+	
+
+	function handleChange(event) {
+		// eslint-disable-next-line default-case
+		// console.log('handling change');
+
+		switch (event.target.name) {
+			case 'email':
+				setEmail(event.target.value);
+				break;
+			case 'username':
+				setUsername(event.target.value);
+				break;
+			case 'password':
+				setPassword(event.target.value);
+				break;
+			case 'confirmPassword':
+				setconfirmPassword(event.target.value);
+				break;
+			case 'newItemTier':
+				setNewItemTier(event.target.value);
+				break;
+			case 'newItemCategory':
+				setNewItemCategory(event.target.value);
+				break;
+			case 'newItemDescription':
+				setNewItemDescription(event.target.value);
+				break;
+			case 'newNeedTier':
+				setNewNeedTier(event.target.value);
+				break;
+			case 'newNeedCategory':
+				setNewNeedCategory(event.target.value);
+				break;
+
+			default:
+				console.log('switch is broke');
+		}
+	}
+
+	let signUpInformation;
+	let signInInformation;
+
+	function checkSubmit(event) {
+		event.preventDefault();
+// 		console.log('checking submit');
+
+		if (username === null) {
+			return;
+		}
+		if (password === null) {
+			return;
+		} 
+		else {
+// 			console.log(username);		
+			setcompletedUsername(username);	
+			runSubmit(event)
+		}
+	}
+
+	function runSubmit(event) {
+		event.preventDefault();
+
+		signUpInformation = {
+			email: email,
+			userName: username,
+			password: password,
+		};
+		signInInformation = {
+			userName: username,
+			password: password,
+		};
+		// console.log(signUpInformation);
+		// console.log(signInInformation)
+
+		switch (event.target.name) {
+			case 'signUp':
+				const match = confirmPassword === password;
+				setisPasswordValid(match);
+				if (match) {
+					signUp();
+				}
+				break;
+
+			case 'signIn':
+				signIn();
+				break;
+
+			default:
+				console.log('switch is broke');
+		}
+	}
+
+	// SIGN UP AND SIGN IN FUNCTIONS
+
+	const [postId, setPostId] = useState('');
+
+	function signUp(body) {
+		// POST request using fetch inside useEffect React hook
+		console.log('signing up');
+
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(signUpInformation),
+		};
+
+		console.log(requestOptions);
+
+		fetch('https://paperclip-api.herokuapp.com/api/user', requestOptions)
+			.then((response) => response.json())
+			.then((data) => {
+				if (data) {
+					setPostId(data.id);
+					setUserId(data._id);
+					setIsUserFound(true);
+					getCategoryData();
+				} else {
+					// console.log('bad user');
+					setIsUserFound(false);
+				}
+			})
+			.then(() => {
+				setPassword(null);
+				setconfirmPassword(null);
+				setHideSignIn(true);
+				setHideInventory(false);
+				history.push(`/${username}`);
+			});
+	}
+
+	function signIn(body) {
+		const requestOptions = {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
+		};
+		
+		let dataVariable = null;
+
+		fetch(
+			`https://paperclip-api.herokuapp.com/api/user/${username}/name`,
+			requestOptions
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				// console.log(data);
+				if (data) {
+// 					console.log(data);
+					dataVariable = data;
+					setPostId(data.id);
+					setUserId(data._id);
+					setIsUserFound(true);
+					getCategoryData();
+					
+				} else {
+					// console.log('bad user');
+// 					console.log('no data');
+					
+					setIsUserFound(false);
+				}
+				// check response to see if the info was good
+				// if not, call a function that will reset the state?
+			})
+			.then(() => {
+				if(dataVariable) {
+// 				console.log('nextscreen');
+				
+				setPassword(null);
+				setconfirmPassword(null);
+				setHideSignIn(true);
+				setHideSignOut(true);
+				console.log(hideSignOut);
+				
+				setHideInventory(false);
+				history.push(`/${username}`)
+				} else {
+				setPassword(null);
+				setconfirmPassword(null);
+				}
+			});
+	}
+
+	//USER SCREEN FUNCTIONS
+
+	function getCategoryData() {
+		const url = `https://paperclip-api.herokuapp.com/api/category`;
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => {
+				setCategoryData(data);
+				setNewItemCategory(data[0]._id);
+				setNewNeedCategory(data[0]._id);
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+	}
+
+	//GET tier by user id
+	async function getTierData() {
+		const url = `https://paperclip-api.herokuapp.com/api/user/${userId}/tier`;
+		const tierFetched = await fetch(url)
+			.then((response) => response.json())
+			.then(async (data) => {
+				const sortedData = await data.sort((a, b) => a.rank - b.rank);
+				setTierData(sortedData);
+				return sortedData;
+			})
+			.then((data) => {
+				setNewItemTier(data[0]._id);
+				setNewNeedTier(data[0]._id);
+				// console.log(data);
+				return true;
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+
+		if (tierFetched) {
+			getItemData();
+			getNeedData();
+			// setNewItemTier(tierData[0]._id);
+		}
+	}
+
+	//GET item by user id
+	function getItemData() {
+		const url = `https://paperclip-api.herokuapp.com/api/item/${userId}`;
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => {
+				setItemData(data);
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+	}
+
+	//Get Todos
+	async function getTodoData() {
+		const url = `https://paperclip-api.herokuapp.com/api/link/${userId}/cycle`;
+		const data = await fetch(url)
+			.then((response) => response.json())
+
+			.catch(function (error) {
+				setError(error);
+			});
+		const contactData = await data.map(async (item) => {
+// 			console.log();
+			const email = await fetch(
+				`https://paperclip-api.herokuapp.com/api/user/${item.need.tier.user}`
+			).then((response) => response.json());
+
+			return {
+				email: email.email,
+				category: item.item.category.title,
+				description: item.item.description,
+				id: item._id,
+				cycle: item.cycle,
+			};
+		});
+		setTodoData(await Promise.all(contactData));
+	}
+
+	function getCycleData(cycleId) {
+		const url = `https://paperclip-api.herokuapp.com/api/cycle/${cycleId}/link`;
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => setCycleData(data))
+			.catch(function (error) {
+				setError(error);
+			});
+	}
+
+	async function submitNewItem() {
+		const url = `https://paperclip-api.herokuapp.com/api/tier/item/${newItemTier}/${newItemCategory}`;
+		const newItemBody = {
+			pic: 'pic',
+			description: newItemDescription,
+		};
+		const newItem = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+			body: JSON.stringify(newItemBody),
+		})
+			.then((response) => response.json())
+			.catch(function (error) {
+				setError(error);
+			});
+
+		if (newItem) {
+			getItemData();
+			setNewItemDescription('');
+		}
+	}
+
+	async function itemDelete(itemId) {
+		const url = `https://paperclip-api.herokuapp.com/api/item/${itemId}`;
+		const itemDeleted = await fetch(url, {
+			method: 'DELETE',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		}).catch(function (error) {
+			setError(error);
+		});
+
+		if (itemDeleted) {
+			getItemData();
+		}
+	}
+
+	function toggleAddItemHidden() {
+		if (addItemHidden === 'hidden') {
+			setAddItemHidden('');
+		} else {
+			setAddItemHidden('hidden');
+		}
+	}
+
+	/////////////////////////////////////
+
+	function getNeedData() {
+		const url = `https://paperclip-api.herokuapp.com/api/need/${userId}`;
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => {
+				setNeedData(data);
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+	}
+
+	async function submitNewNeed() {
+		const url = `https://paperclip-api.herokuapp.com/api/tier/need/${newNeedTier}/${newNeedCategory}`;
+		const newNeed = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		})
+			.then((response) => response.json())
+			.catch(function (error) {
+				setError(error);
+			});
+
+		if (newNeed) {
+			getNeedData();
+		}
+	}
+
+	async function needDelete(needId) {
+		const url = `https://paperclip-api.herokuapp.com/api/need/${needId}`;
+		const needDeleted = await fetch(url, {
+			method: 'DELETE',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		}).catch(function (error) {
+			setError(error);
+		});
+
+		if (needDeleted) {
+			getNeedData();
+		}
+	}
+
+	function toggleAddNeedHidden() {
+		if (addNeedHidden === 'hidden') {
+			setAddNeedHidden('');
+		} else {
+			setAddNeedHidden('hidden');
+		}
+	}
+
+	/////////////////////////////////////////
+	//
+	//
+	//
+	//
+	//
+	//
+	//TRADE FUNCTIONS
+
+	function getUserLinks() {
+		// settradeData
+		console.log('about to call');
+		const url = `https://paperclip-api.herokuapp.com/api/link/${userId}/unconfirmed`;
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				settradeData(data);
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+	}
+
+	function decisionButtonClick(event, nextIndex) {
+		switch (event.target.id) {
+			case 'yes':
+				// console.log('yes');
+				// console.log(nextIndex);
+				// console.log(tradeDataIndex);
+				// console.log(tradeData[tradeDataIndex].item.description);
+				decideTrade('yes', nextIndex - 1);
+				settradeDataIndex(nextIndex);
+				break;
+
+			case 'no':
+				// console.log('no');
+				// console.log(nextIndex);
+				// console.log(tradeDataIndex);
+				// console.log(tradeData[tradeDataIndex].item.description);
+				decideTrade('no', nextIndex - 1);
+				settradeDataIndex(nextIndex);
+				break;
+
+			default:
+				console.log('switch is broke');
+		}
+	}
+
+	let linkUpdateInformation;
+
+	//PUT to update links with trade decisions
+	function decideTrade(decision, linkIndex) {
+		console.log('trade decided');
+		console.log(tradeData);
+		if (!tradeData[0]) {
+			console.log('no trade data!');
+			return;
+		}
+
+		let linkId = tradeData[linkIndex]._id;
+		console.log(linkId);
+
+		linkUpdateInformation = {
+			confirmation: 0,
+		};
+		console.log(linkUpdateInformation);
+
+		switch (decision) {
+			case 'yes':
+				linkUpdateInformation.confirmation = 1;
+				console.log(linkUpdateInformation);
+				break;
+
+			case 'no':
+				linkUpdateInformation.confirmation = -1;
+				console.log(linkUpdateInformation);
+				break;
+
+			default:
+				console.log('switch is broke');
+		}
+		// create an object for trade link and update confirmed value to -1 or 0 based on the value that's passed as a variable into this function
+		//put the trade link into the body
+
+		const requestOptions = {
+			method: 'PATCH',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(linkUpdateInformation),
+		};
+
+		fetch(
+			`https://paperclip-api.herokuapp.com/api/link/${linkId}/confirm`,
+			requestOptions
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+			});
+	}
+
+
+	// A P I   I N T E R A C T I O N S
+	//
+	//
+	//
+	//
+	//
+	// A P I   I N T E R A C T I O N S
+
+	
+	return (
+		<div className='wrapper' id='grad'>
+			<main>
+				<div className={hideSignOut ? 'graphicHolder' : 'hidden'}>
+					<Link to='/link'>
+						<p className='graphic' onClick={middleButtonClick}>
+							=======<br></br>=====
+						</p>
+					</Link>
+				</div>
+				<div className={hideSignOut ? 'hidden' : 'graphicHolder'}>
+					<a href="">
+						<p className='graphic'>
+							=======<br></br>=====
+						</p>
+					</a>
+				</div>
+				<Route
 					path='/'
-					exact={true}
+					// exact={true}
 					render={() => {
 						return (
-							<>      
-                
-                <h2 className="name"> 
-                  Sam Russell 
-                </h2>
-                <h1 className="email" onClick={() => {
-                  window.location.href = 'mailto:sam@samrussell.com';
-                }}>
-                  sam@samrussell.com
-                </h1>
-                
-                
-                <img className="LinkedInLogo" src={LinkedInLogo} onClick={() => {
-                  window.open("https://www.linkedin.com/in/sam--russell/", "_blank")
-                }}></img>
-                
-                <img className="GitHubLogo" src={GithubLogo} onClick={() => {
-                  window.open("https://www.github.com/metacryst/", "_blank")
-                }}></img>
-              
-                
-              
-                
-                
-                
-                <h1 className="zero" onClick={() => {
-                  history.push('/softwareCPR');
-                }}>
-                  softwareCPR
-                </h1>
-
-                <h1 className="one" onClick={() => {
-                  history.push('/dsig');
-                }}>
-                  ΔΣΦ
-                </h1>
-                
-
-                <h1 className="two" onClick={() => {
-                  window.open('http://harvard--art.herokuapp.com/', "_blank")
-                }}>
-                  "harvard art"
-                </h1>
-                
-                <h1 className="three" onClick={() => {
-                  window.open('http://paperclip--house.herokuapp.com/', "_blank");
-                }}>
-                  paperclip//
-                </h1>
-                
-                <h1 className="four" onClick={() => {
-                  window.open('http://wip--gallery.herokuapp.com/', "_blank");
-                }}>
-                  [wip]
-                </h1>
-                
-                <h1 className="five" onClick={() => {
-                  history.push('/parchment');
-                }}>
-                  ~parchment
-                </h1>
-                
-                
-                <h1 className="six" onClick={() => {
-                  history.push('/whowillsurvive');
-                }}>
-                  Who Will Survive in America
-                </h1>
-                
-                <h1 className="seven" onClick={() => {
-                  history.push('/maga');
-                }}>
-                  Make America Great Again
-                </h1>
-                
-                
-                <h1 className="eight" onClick={() => {
-                  window.open("https://open.spotify.com/track/0zGnnrHUzxR8Y0jalflSHj?si=9045bf70159e40ab", "_blank")
-                }}>
-                    I saw my angels on a parking garage
-                </h1>
-                
-                <h1 className="nine" onClick={() => {
-                  window.open("https://open.spotify.com/track/12S8FcPoIPcS7bbe8OYt4X?si=64191ef1a9924c47", "_blank")
-                }}>
-                  A Letter
-                </h1>
-                
-                <h1 className="ten" onClick={() => {
-                  window.open("https://open.spotify.com/track/3w7XruCEgS7lBY4WZ8msCy?si=73f5ce5ed94e4861", "_blank")
-                }}>
-                  Zeus
-                </h1>
-                
-                
-                <h1 className="eleven" onClick={() => {
-                  history.push('/physics');
-                }}>
-                  Physics I
-                </h1>
-                <h1 className="twelve" onClick={() => {
-                  history.push('/calculus');
-                }}>
-                  Multivariable Calculus
-                </h1>
-                <h1 className="thirteen" onClick={() => {
-                  history.push('/linear');
-                }}>
-                  Linear Algebra
-                </h1>
-                <h1 className="fourteen" onClick={() => {
-                  history.push('/discrete');
-                }}>Discrete Structures
-                </h1>
-                
-                
-                
-                
-                <h1 className="fifteen" onClick={() => {
-                  history.push('/application');
-                }}>
-                  Application Materials
-                </h1>
+							<>
+								<div className={hideNav ? 'hidden' : ''}>
+									<Link to='/'>
+										<h1 className='header' name='header'>
+											paperclip//
+										</h1>
+									</Link>
+									<Link to='/trade'>
+										<h2
+											onClick={cornerButtonClick}
+											className='trade'
+											name='trade'>
+											trade
+										</h2>
+									</Link>
+									<Link to='/about'>
+										<h2
+											onClick={cornerButtonClick}
+											className='about'
+											name='about'>
+											about
+										</h2>
+									</Link>
+									{/* USER BUTTON */}
+									<div className={hideUserOptions ? 'user' : 'hidden'}>
+										<Link
+											to={completedUsername ? `${completedUsername}` : 'user'}>
+											{/* GENERIC USER HEADER */}
+											<h2
+												onClick={cornerButtonClick}
+												className={completedUsername ? 'hidden' : 'user'}
+												name='user'>
+												user
+											</h2>
+											{/* USERNAME HEADER */}
+											<h2
+												onClick={cornerButtonClick}
+												className={completedUsername ? 'user' : 'hidden'}
+												name='completedUsername'>
+												{completedUsername}
+											</h2>
+										</Link>
+									</div>
+									{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
+									<div className={hideUserOptions ? 'hidden' : 'user'}>
+										<Link to='/signup'>
+											<h2 className="navSignButton">sign up</h2>
+										</Link>
+										<Link to='/signin'>
+											<h2 className="navSignButton">sign in</h2>
+										</Link>
+									</div>
+								</div>
 							</>
-              
-              
-              
-              
 						);
 					}}
 				/>
-      
-      
-      
-      
-      
-      
-      
-      <Route
-					path='/softwareCPR'
-					exact={true}
+				<Route
+					path={'/' + completedUsername}
 					render={() => {
 						return (
-							<div className="softwareCPRWrapper">
-                <h2 className="name" className="softwareCPRName" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell 
-                </h2>
-								<h2 className="softwareCPRInfo" onClick={() => {;
-                }}>
-									: Software Testing Engineer for
-								</h2>
-                <h2 className="softwareCPRLink" onClick={() => {
-                  window.open("https://softwarecpr.com/", "_blank")
-                }}>
-									softwareCPR, LLC
-								</h2>
-							</div>
+							<>
+								<Link to='/'>
+									<h1 className='header'>paperclip//{completedUsername}</h1>
+								</Link>
+								<Item
+									toggleAddItemHidden={toggleAddItemHidden}
+									addItemHidden={addItemHidden}
+									newItemDescription={newItemDescription}
+									handleChange={handleChange}
+									categoryData={categoryData}
+									tierData={tierData}
+									itemData={itemData}
+									itemDelete={itemDelete}
+									getTierData={getTierData}
+									submitNewItem={submitNewItem}
+									setNewItemTier={setNewItemTier}
+									setNewItemCategory={setNewItemCategory}
+									paperclipButtonClick={paperclipButtonClick}
+								/>
+								<Need
+									toggleAddNeedHidden={toggleAddNeedHidden}
+									addNeedHidden={addNeedHidden}
+									handleChange={handleChange}
+									categoryData={categoryData}
+									tierData={tierData}
+									needData={needData}
+									needDelete={needDelete}
+									getTierData={getTierData}
+									submitNewNeed={submitNewNeed}
+									setNewNeedTier={setNewNeedTier}
+									setNewNeedCategory={setNewNeedCategory}
+									paperclipButtonClick={paperclipButtonClick}
+								/>
+							</>
 						);
 					}}
 				/>
-      
-      
-      <Route
-					path='/dsig'
-					exact={true}
+				<Route
+					path='/trade'
 					render={() => {
 						return (
-							<div className="dsigWrapper">
-                <h2 className="dsigName" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell 
-                </h2>
-								<div className="dsigInfo">
-									coming soon.
-								</div>
-							</div>
+							<>
+								<Link to='/'>
+									<h1
+										className={hideTrade ? 'hidden' : 'header'}
+										name='trade'
+										onClick={paperclipButtonClick}>
+										paperclip//trade
+									</h1>
+								</Link>
+								<Trade
+									getUserLinks={getUserLinks}
+									tradeData={tradeData}
+									decisionButtonClick={decisionButtonClick}
+									tradeDataIndex={tradeDataIndex}
+								/>
+							</>
 						);
 					}}
 				/>
-        
-        
-        <Route
-					path='/parchment'
-					exact={true}
+				<Route
+					path='/about'
 					render={() => {
 						return (
-							<div className="wrapper">
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell 
-                </h2>
-								<div className="parchmentInfo">
-									coming soon. A new Text Editor. 
-								</div>
-							</div>
+							<>
+								<Link to='/'>
+									<h1 className='header'>paperclip//</h1>
+								</Link>
+								<About />
+							</>
 						);
 					}}
 				/>
-        
-        
-        <Route
-					path='/whowillsurvive'
-					exact={true}
+				<Route
+					path='/signup'
 					render={() => {
 						return (
-							<div className="whoWillSurviveWrapper">
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                <h2 className="title" onClick={() => {
-                  window.open("https://www.amazon.com/Who-Will-Survive-America-Capitalism/dp/1541389964", "_blank")
-                }}> 
-                  WHO WILL SURVIVE IN AMERICA
-                </h2>
-								<div className="whoWillSurviveInfo">
-                © December 2017 - a book about the 1970s Marxist theory of Late Capitalism, and why parts of the theory arose 50 years later. 
-								</div>
-							</div>
+							<>
+								<Link to='/'>
+									<h1 className='header'>paperclip//sign up</h1>
+								</Link>
+								<SignUp
+									handleChange={handleChange}
+									checkSubmit={checkSubmit}
+									hideSignUp={hideSignUp}
+									isPasswordValid={isPasswordValid}
+								/>
+							</>
 						);
 					}}
 				/>
-        
-        
-        <Route
-					path='/maga'
-					exact={true}
+				<Route
+					path='/signin'
 					render={() => {
 						return (
-							<div className="magaWrapper">
-                <h2 id="magaName" className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                <h2 className="magaTitle" onClick={() => {
-                  window.open("https://www.amazon.com/Make-America-Great-Again-Humanity/dp/1719549389/ref=sr_1_4?dchild=1&keywords=make+america+great+again+sam+russell&qid=1613865944&sr=8-4", "_blank")
-                }}> 
-                  MAKE AMERICA GREAT AGAIN
-                </h2>
-                <div className="magaInfo">
-                © June 2018 - a book about Kanye West's 2018 presidential campaign 
-								</div>
-							</div>
+							<>
+								<Link to='/'>
+									<h1 className='header'>paperclip//sign in</h1>
+								</Link>
+								<SignIn
+									handleChange={handleChange}
+									checkSubmit={checkSubmit}
+									hideSignIn={hideSignIn}
+									isUserFound={isUserFound}
+								/>
+							</>
 						);
 					}}
 				/>
-        
-        <Route
-					path='/physics'
-					exact={true}
+				<Route
+					path='/link'
 					render={() => {
 						return (
-							<div className="wrapper">
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                <h2 className="physicsTitle"> 
-                  //      ____    __
-//     / __ \  / /_    __  __  _____  (_) _____  _____
-//    / /_/ / / __ \  / / / / / ___/ / / / ___/ / ___/
-//   / ____/ / / / / / /_/ / (__  ) / / / /__  (__  )
-//  /_/     /_/ /_/  \__, / /____/ /_/  \___/ /____/
-//                   /____/
-                </h2>
-                <div className="physicsInfo">
-                  ENERGY
-                  <br></br>
-                  <br></br>
-                  mo t  i   o     n
-                  <br></br>
-                  <br></br>
-                  || forces ||
-                  <br></br>
-                  <br></br>
-                  --momentum-->
-                  <br></br>
-                  <br></br>
-                  fluids~~~
-                  <br></br>
-                  <br></br>
-                  ~waves~
-                  <br></br>
-                  <br></br>
-                  `gases`
-								</div>
-							</div>
+							<>
+								<Link to='/'>
+									<h1 className='header'>paperclip//{completedUsername ? `${completedUsername}` + '\'s LINKS' : 'NO LINKS'}</h1>
+								</Link>
+								<Cycle
+									getTodoData={getTodoData}
+									todoData={todoData}
+									getCycleData={getCycleData}
+									cycleData={cycleData}
+								/>
+							</>
 						);
 					}}
 				/>
-        
-        <Route
-					path='/calculus'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                <h2 className="calcTitle"> 
-                  <pre>
-                  +------+.      +------+       +------+       +------+      .+------+<br></br>
-                  |`.    | `.    |\     |\      |      |      /|     /|    .' |    .'|<br></br>
-                  |  `+--+---+   | +----+-+     +------+     +-+----+ |   +---+--+'  |<br></br>
-                  |   |  |   |   | |    | |     |      |     | |    | |   |   |  |   |<br></br>
-                  +---+--+.  |   +-+----+ |     +------+     | +----+-+   |  .+--+---+<br></br>
-                  &nbsp;`. |    `.|    \|     \|     |      |     |/     |/    |.'    | .' <br></br>
-                  &nbsp;  `+------+     +------+     +------+     +------+     +------+'   <br></br>
-                  </pre>
-                </h2>
-                <div className="integrals">
-                  ∫∫∫∫∫∫∫∫∫∫∫∫∫∫
-								</div>
-                <div className="integrals" id="int2">
-                  ∫∫∫∫∫∫∫∫∫∫∫
-								</div>
-                <div className="integrals" id="int3">
-                  ∫∫∫∫∫∫∫∫∫∫∫
-								</div>
-                <div className="integrals" id="int4">
-                  ∫∫∫∫∫∫∫∫∫∫∫
-								</div>
-                <div className="integrals" id="int5">
-                  ∫∫∫∫∫∫∫∫∫∫∫
-								</div>
-                <div className="integrals" id="int6">
-                  ∫∫∫∫∫∫∫∫∫∫∫
-								</div>
-                <div className="integrals">
-                  ∫∫∫∫∫∫∫
-								</div>
-                <div className="lineIntegrals">
-                  ∮∮∮∮∮∮∮∮∮∮∮∮
-								</div>
-                <div className="info">
-                  partial differentiation -- 
-                  <br></br>
-                  3D graphing
-                  <br></br>
-                  gradients
-                  <br></br>
-                  directional derivatives
-                  <br></br>
-                  vector fields
-								</div>
-							</div>
-						);
-					}}
-				/>
-        
-        <Route
-					path='/linear'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                <h2 className="linearTitle"> 
-                <pre>
-                  1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  <span className="innerText">M A T R I X</span> 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  <span className="innerText">T R A N S F</span> 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 <span className="innerText">O</span> 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 <span className="innerText">R</span> 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 <span className="innerText">M</span> 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-                  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br></br>
-    
-                  </pre>
-                </h2>
-							</div>
-						);
-					}}
-				/>
-        
-        
-        <Route
-					path='/discrete'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                <h2 className="discreteTitle">
-                <pre>
-                You have just arrived on an island inhabited<br></br> 
-                by two kinds of people: knights who <br></br>
-                always tell the truth, and knaves who always lie.<br></br> 
-                Every inhabitant of the island is either <br></br>
-                a knight or a knave, and <br></br> 
-                everyone knows which inhabitants are knights <br></br> 
-                and which are knaves. You are <br></br> 
-                a stranger on the island, and you do not know <br></br>
-                who is a knight and who is a knave.<br></br>
-                
-                <br></br>
-                It is rumored that there is gold on the island. <br></br>
-                You ask an inhabitant if there really is <br></br>
-                gold on the island. <br></br>
-                He responds, “There is gold on this island if and<br></br>
-                only if I am a knight.”<br></br>
-                <br></br>
-                Is there gold on the island?<br></br>
-                </pre>
-                </h2>
-							</div>
-						);
-					}}
-				/>
-        
-        
-        
-        
-        <Route
-					path='/application'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-              
-                <h2 className="name" onClick={() => {
-                  history.push('/')
-                }}> 
-                  Sam Russell
-                </h2>
-                
-                <h1 className="JobInfo" onClick={() => {
-                  history.push('/jobinfo')
-                }}>Job Info</h1>
-                
-                <h1 className="CoverLetter" onClick={() => {
-                  history.push('/coverletter')
-                }}>Cover Letter</h1>
-                
-                <h1 className="Resume" onClick={() => {
-                  history.push('/resume')
-                }}>Resume</h1>
-                                
-                <h1 className="SkillsList" onClick={() => {
-                  history.push('/skillslist')
-                }}>Skills List</h1>
-                
-							</div>
-						);
-					}}
-				/>
-        
-        
-        
-        
-        <Route
-					path='/jobinfo'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-              
-                <img className="JobInfoImage image" src={JobInfo} ></img>
-                
-							</div>
-						);
-					}}
-				/>
-        
-        <Route
-					path='/coverletter'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-              
-                <img className="CoverLetterImage image" src={CoverLetter} ></img>
-                
-							</div>
-						);
-					}}
-				/>
-        
-        
-        <Route
-					path='/resume'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-              
-                <img className="Resume image" src={Resume1} ></img>
-                <img className="Resume image" src={Resume2} ></img>
-                
-							</div>
-						);
-					}}
-				/>
-        
-        <Route
-					path='/skillslist'
-					exact={true}
-					render={() => {
-						return (
-							<div className="wrapper">
-              
-                <img className="SkillsList1 image" src={SkillsList1} ></img>
-                <img className="SkillsList2 image" src={SkillsList2} ></img>
-                
-							</div>
-						);
-					}}
-				/>
-        
-        
-        
-    
-        
-        
-        
-      
-      
-      
-      
-      
-      
-      
-      {/* <div className="line1"></div>
-      <div className="line2"></div> */}
-
-    </div>
-  );
+			</main>
+		</div>
+	);
 }
 
 export default App;
+
+
+
+{/* <Route
+path='/link'
+render={() => {
+	return (
+		<>
+			<Link to='/'>
+				<h1 className='header'>paperclip</h1>
+			</Link>
+			<Cycle getTodoData={getTodoData} todoData={todoData} />
+		</>
+	);
+}}
+/> */}

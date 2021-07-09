@@ -1,640 +1,411 @@
-
-
-:root {
-	--padding: 15px 
-}
-
-@media screen and (min-width: 750px) {
-	:root {
-    --padding: 30px 
-  }
-}
-
-
-
-
-
-
- 
 body {
-  height: 100%;
+	background-color: rgba(238, 4, 4, 0.726);
 }
 
-
-
-
-a {
-  text-decoration: none;
+a,
+.delete,
+.add {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
 }
-
-a:visited { text-decoration: none; color: black;}
-a:hover { text-decoration: none; }
-a:focus { text-decoration: none; }
-a:hover, a:active { text-decoration: none; }
-
 
 h2 {
-  font-size: 30px;
-  font-family:'Times New Roman', Times, serif;
+	font-weight: 900;
+	color: black;
 }
 
-.name {
-  position: absolute;
-  left: 30px;
+h2:hover {
+	color: #2b2b2c;
 }
 
-@media only screen and (min-width: 500px) {
-  .name:hover {
-    color: grey;
-    cursor: pointer;
-  }
+h2:active {
+	transform: translateY(3px);
 }
 
+/* LINKS */
 
-
-.email {
-  position: absolute;
-  left: 30px;
-  top: 48px;
-  font-weight: 400;
-  z-index: -1000;
+.todoItems {
+	position: absolute;
+	top: 30%;
+	left: 42%;
+	line-height: 40px; 
+	font-weight: bold;
 }
 
-@media only screen and (max-width: 500px) {
-  .email {
-    top: 24px;
-    right: 10px;
-    text-align: right;
-  }
+.cyclePath {
+	position: absolute;
+	top: 60%;
+	left: 48%;
+	font-weight: bold;
+	font-size: 12pt;
 }
 
-
-.LinkedInLogo {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  left: 30px;
-  top: 80px;
+.cycleData {
+	position: absolute;
 }
 
-.GitHubLogo {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 32px;
-  top: 110px;
+.graphic {
+	position: absolute;
+	top: 45%;
+	left: 47%;
+	color: black;
 }
 
-
-.LinkedInLogo:hover {
-  cursor: pointer;
-  transform: rotate(90deg);
+.graphicHolder {
+	text-align: center;
 }
 
-.GitHubLogo:hover {
-  cursor: pointer;
-  transform: rotate(90deg);
+/* four corners */
+.header {
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }
 
-
-
-
-
-
-
-
-
-h1 {
-  font-size: 15px;
-  font-family:'Times New Roman', Times, serif;
-  left: 45vw;
-  position: absolute;
+.header:hover {
+	color: #e4e2e2
 }
 
-
-@media only screen and (min-width: 500px) {
-  h1:hover {
-    color: grey;
-    cursor: pointer;
-  }
- }
-
-
-
- 
- 
- 
-.zero {
-  top: 8vh;
+.user {
+	position: absolute;
+	right: 20px;
+	top: 14px;
 }
 
-.one {
-  top: 14vh;
+.trade {
+	position: absolute;
+	bottom: 15px;
+	left: 20px;
 }
 
-@media only screen and (min-width: 500px) {
-  .one:hover {
-    color: #3d6b1f;
-  }
- }
-
-
-
-
-
-
-
-.two {
-  top: 25vh;
-}
-
-.three {
-  top: 29vh;
-}
-
-.four {
-  top: 33vh;
-}
-
-.five {
-  top: 37vh;
+.about {
+	position: absolute;
+	bottom: 15px;
+	right: 20px;
 }
 
 
 
-
-
-
-
-.six {
-  top: 48vh;
-}
-
-.seven {
-  top: 52vh;
+.navSignButton {
+	color: white;
 }
 
 
 
+/* SIGN IN AND UP */
 
 
-
-
-.eight {
-  top: 62vh;
+.signUp {
+	position: absolute;
+	right: 6%;
+	top: 90%;
 }
 
-@media only screen and (max-width: 500px) {
-  .eight {
-    top: 59.5vh;
-  }
+.signIn {
+	position: absolute;
+	right: 8%;
+	top: 90%;
 }
 
-.nine {
-  top: 65.7vh;
+.inputBox {
+	background: transparent;
+	border: 2px solid black;
+	border-right: none;
+	border-left: none;
+	margin-left: 8px;
+	height: 20px;
+	font-size: 10pt
 }
 
-.ten {
-  top: 69.5vh;
+.inputBox:focus {
+	outline: 0
 }
 
-
-
-
-
-
-
-
-.eleven {
-  top: 78vh;
+::placeholder {
+	color: black;
+	font-weight: bold;
 }
 
-.twelve {
-  top: 82vh;
+.inputBox:focus::placeholder {
+	color: transparent;
+	outline: 0
 }
 
-.thirteen {
-  top: 86vh;
+.signUpButton,
+.signInButton {
+	padding: 5px;
+	background: transparent;
+	color: black;
+	border: 2px solid black;
+	font-weight: bolder;
+	font-size: 12pt;
+	width: 70px
 }
 
-.fourteen {
-  top: 90vh;
+.signUpButton:hover,
+.signInButton:hover {
+	background-color: white;
+	cursor: pointer;
 }
 
-
-
-
-.fifteen {
-  top: 140px;
-  left: 1000px;
-  transform: rotate(90deg);
+.signUpButton:active,
+.signInButton:active {
+	background-color: grey;
+	transform: translateY(3px);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.App {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-} */
-
-
-
-.softwareCPRWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
+.signUpButton:focus,
+.signInButton:focus {
+	outline: 0
 }
 
-.softwareCPRName {
-  position: absolute;
-  left: 30px;
+.passwordMatch {
+	margin-left: 8px;
 }
 
-.softwareCPRName:hover {
-  color: grey;
-  cursor: pointer;
-}
-
-.softwareCPRInfo {
-  position: absolute;
-  color: black;
-  left: 186px;
-  /* top: 3px;
-  font-size: 28px; */
-}
-
-.softwareCPRLink {
-  position: absolute;
-  left: 26vw;
-  color: #a23939;
-  font-size: 5vw;
-  font-family: Arial, Helvetica, sans-serif;
-  top: -4vh;
-  z-index: -1000;
-  /* transform: rotate(20deg); */
-}
-
-@media only screen and (max-width: 800px) {
-  .softwareCPRLink {
-    left: 25vw;
-    top: 13vh;
-    font-size: 5.5vh;
-  }
-}
-
-.softwareCPRLink:hover {
-  color: grey;
-  cursor: pointer;
+.isUserFound {
+	margin-left: 8px;
 }
 
 
+/* ITEMS AND NEEDS SCREEN */
 
 
-
-
-
-.dsigWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  background-color: #4b9b41;
+.itemsContainer {
+	position: absolute;
+	left: 20%;
+	top: 28%;
+	line-height: 30px;
 }
 
-.dsigName {
-  position: absolute;
-  left: 30px;
-  color: gold;
+.needsContainer {
+	position: absolute;
+	left: 72%;
+	top: 28%;
 }
 
-.dsigName:hover {
-  color: grey;
-  cursor: pointer;
+.tierItems {
+	line-height: 20px;
 }
 
-.dsigInfo {
-  color: white;
+.newItemDescription {
+	background: transparent;
+	border: 2px solid black;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	margin-left: 8px;
+	height: 20px;
+	font-size: 8pt
+}
+
+.newItemDescription:focus {
+	outline: 0;
+	background: transparent;
+}
+
+.newItemDescription:focus::placeholder {
+	color: transparent;
+	outline: 0
+}
+
+.select {
+	appearance: none;
+	box-sizing: border-box;
+	width: 80px;
+	border: 2px solid black;
+	border-radius: 0px;
+	/* border-top: none;
+	border-left: none;
+	border-right: none; */
+	background: transparent;
+	padding: 2px;
+	margin-left: 2px;
+	text-align-last: center;
+}
+
+.select:focus {
+	outline: 0;
+}
+
+#itemTiers,
+#needTiers {
+	margin-right: 5px
+}
+
+#itemCategories,
+#needCategories {
+	margin-left: 7px;
+	/* width: 80px; */
+}
+
+.categoryTier {
+	margin-top: 14px;
+	margin-bottom: 8px;
+}
+
+.itemSubmit {
+	margin-left: 15px;
+}
+
+.itemSubmit,
+.needSubmit {
+	margin-top: 3px;
+	padding: 5px;
+	background: transparent;
+	color: black;
+	border: 2px solid black;
+	font-weight: bolder;
+	font-size: 6pt;
+	width: 40px;
+	height: 40px;
+	border-radius: 90%;
+}
+
+.itemSubmit:hover,
+.needSubmit:hover {
+	background-color: white;
+	cursor: pointer;
+}
+
+.itemSubmit:active,
+.needSubmit:active {
+	background-color: grey;
+	transform: translateY(3px);
+}
+
+.itemSubmit:focus,
+.needSubmit:focus {
+	outline: 0;
+}
+
+
+
+
+/* TRADE SCREEN */
+
+
+.tradeDisplay {
+	position: absolute;
+	bottom: 15px;
+	right: 20px;
+}
+
+.decisionButton {
+  font-size: 10pt;
+	border: 3px solid black;
+	background-color: black;
   font-weight: 800;
-  top: 400px;
-  left: 69vh;
-  position: absolute;
+  height: 60px;
+  width: 60px;
+	color: black;
+	border-radius: 50%;
+}
+
+.decisionButton:hover {
+	background-color: black;
+	color: white;
+	cursor: pointer;
+}
+
+.decisionButton:focus {
+	outline: 0;
+}
+
+.decisionButton:active {
+	background-color: grey;
+	transform: translateY(3px);
+}
+
+
+#yes {
+	position: absolute;
+	top: 30%;
+	left: 36.6%;
+}
+
+#no {
+	position: absolute;
+	top: 63%;
+	left: 56.6%;
+}
+
+.hidden {
+	display: none;
 }
 
 
 
+/* ABOUT PAGE */
 
-
-
-
-
-
-
-
-.parchmentInfo {
-  color: black;
-  font-weight: 800;
-  top: 400px;
-  left: 69vh;
-  position: absolute;
+.aboutText {
+	font-size: 12pt;
+	text-align: right;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.whoWillSurviveWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  background-color: #f84949;
+.credits {
+	position: absolute;
+	transform: rotate(-45deg);
+	font-weight: lighter;
+	font-size: 10pt;
 }
 
-.title {
-  left: 15vw;
-  top: 15vh;
-  position: absolute;
+#c1 {
+	top: 20px;
+	right: 10px;
+}
+#c2 {
+	top: 400px;
+	left: 200px
+}
+#c3 {
+	top: 1000px;
+}
+#c4 {
+	bottom: 1000px;
+	left: 500px;
+}
+#c5 {
+	top: 300px;
+	right: 550px
+}
+#c6 {
+	top: 200px;
+	left: 100px
+}
+#c7 {
+	
+}
+#c8 {
+	top: 700px;
+	left: -200px
+}
+#c9 {
+	top: 600px;
+	left: 300px
+}
+#c10 {
+	top: 700px;
+	left: 800px
+}
+#c11 {
+	top: 500px;
+	left: 900px
 }
 
-.title:hover {
-  color: #4f4f4f;
-  cursor: pointer;
+.tradeHouse {
+	position: absolute;
+	top: 40%;
+	left: 38%;
+	font-weight: bold;
 }
 
-.whoWillSurviveInfo {
-  left: 40vw;
-  top: 40vh;
-  position: absolute;
+.website {
+	font-weight: bold;
+	padding: 5px;
 }
 
-
-
-
-
-
-
-.magaWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  background-color: white;
+.website:hover {
+	background-color: blue;
 }
-
-#magaName {
-  color: black;
-}
-
-#magaName:hover {
-  color: grey;
-  cursor: pointer;
-}
-
-.magaTitle {
-  left: 15vw;
-  top: 15vh;
-  position: absolute;
-  color: red;
-}
-
-.magaTitle:hover {
-  color: #4f4f4f;
-  cursor: pointer;
-}
-
-
-.magaInfo {
-  left: 40vw;
-  top: 40vh;
-  position: absolute;
-  color: blue;
-}
-
-
-
-
-
-
-
-
-
-.physicsTitle {
-  position: absolute;
-  right: 40vw;
-  top: 20vh;
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.physicsInfo {
-  position: absolute;
-  right: 20vw;
-  bottom: 20vh;
-  text-align: center;
-  font-weight: 800;
-  color: red;
-}
-
-
-
-
-
-.calcTitle {
-  position: absolute;
-  right: 40vw;
-  top: 20vh;
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.calcInfo {
-  position: absolute;
-  right: 20vw;
-  bottom: 20vh;
-  text-align: center;
-  font-weight: 800;
-  color: red;
-}
-
-.integrals, .lineIntegrals {
-  font-size: 3vh;
-  position: absolute;
-}
-
-.lineIntegrals {
-  top: 1vh;
-  color: red;
-}
-
-
-.integrals {
-  font-size: 5vh;
-  position: absolute;
-  right: 0vw;
-  bottom: 0vh;
-  transform: rotate(25deg);
-  color:  blue;
-}
-
-#int2 {
-  transform: rotate(0deg);
-}
-
-#int3 {
-  transform: rotate(90deg);
-}
-
-#int4 {
-  transform: rotate(30deg);
-}
-
-#int5 {
-  transform: rotate(2deg);
-}
-
-#int6 {
-  transform: rotate(120deg);
-}
-
-
-
-.info {
-  position: absolute;
-  top: 60vh;
-  left: 30vw;
-}
-
-
-
-
-
-
-
-
-
-
-.wrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  
-}
-
-.linearTitle {
-  position: absolute;
-  top: 0vh;
-  font-size: 6vh;
-  max-height: 100vh;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-.innerText {
-  color: red;
-}
-
-
-
-
-
-
-
-@media only screen and (max-width: 800px) {
-  .discreteTitle {
-    font-size: 3vw;
-  }
-}
-
-
-.discreteTitle {
-  position: absolute;
-  top: 20vh;
-  font-size: 2vh;
-  left:1vw;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.JobInfo {
-  top: 10vh;
-}
-
-.CoverLetter {
-  top: 20vh;
-}
-
-.Resume {
-  top: 30vh;
-}
-
-.SkillsList {
-  top: 40vh;
-}
-
-
-.image {
-  height: 100vh;
-}
-
-
-
-
-
-
-
-/* 
-
-.line1 {
-  width: 600px;
-  height: 0;
-  top: 20%;
-  transform: rotate(45deg);
-  border: 1px solid white;
-  position: absolute;
-}
-
-.line2 {
-  width: 600px;
-  height: 0;
-  top: 20%;
-  transform: rotate(270deg);
-  border: 1px solid white;
-  position: absolute;
-} */
-
-
-
