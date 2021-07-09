@@ -1,640 +1,173 @@
-
-
-:root {
-	--padding: 15px 
+.wrapper {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  padding: 0 1rem;
 }
-
-@media screen and (min-width: 750px) {
-	:root {
-    --padding: 30px 
-  }
-}
-
-
-
-
-
-
- 
-body {
-  height: 100%;
-}
-
-
-
 
 a {
   text-decoration: none;
 }
 
-a:visited { text-decoration: none; color: black;}
-a:hover { text-decoration: none; }
-a:focus { text-decoration: none; }
-a:hover, a:active { text-decoration: none; }
-
-
-h2 {
-  font-size: 30px;
-  font-family:'Times New Roman', Times, serif;
+.Arts {
+  display: flex;
+  margin-top: 8px;
+  margin-right: 8px;
 }
 
-.name {
+.Art {
+  margin: 10px;
+  max-height: 500px;
+}
+
+.galleryPiece {
+  width: 100%;
+  max-height: 570px;
+  object-fit: contain;
+}
+
+.header {
+  color: black;
   position: absolute;
-  left: 30px;
+  bottom: 2px;
+  left: 20px;
 }
 
-@media only screen and (min-width: 500px) {
-  .name:hover {
-    color: grey;
-    cursor: pointer;
-  }
-}
-
-
-
-.email {
+.about {
+  color: #ff4400;
   position: absolute;
-  left: 30px;
-  top: 48px;
-  font-weight: 400;
-  z-index: -1000;
+  right: 30px;
+  bottom: 5px;
+  margin-top: 8px;
+  font-weight: 800;
 }
 
-@media only screen and (max-width: 500px) {
-  .email {
-    top: 24px;
-    right: 10px;
-    text-align: right;
-  }
+.about:hover {
+  color: #7b2619;
 }
 
+.about:active {
+  transform: translateY(4px);
+}
 
-.LinkedInLogo {
+.aboutText {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  left: 30px;
-  top: 80px;
+  right: 20px;
+  font-style: italic;
+  margin-left: 20px;
+  text-align: right;
 }
 
-.GitHubLogo {
+.credit {
+  color: red;
+  font-style: none;
   position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 32px;
-  top: 110px;
+  bottom: 22px;
+  right: 20px;
+  display: inline-block;
 }
 
-
-.LinkedInLogo:hover {
-  cursor: pointer;
-  transform: rotate(90deg);
+.website {
+  text-decoration: none;
+  color: red;
+  border: 2px solid white;
+  padding: 5px;
 }
 
-.GitHubLogo:hover {
-  cursor: pointer;
-  transform: rotate(90deg);
+.website:hover {
+  color: white;
+  background-color: blue;
 }
-
-
-
-
-
-
-
-
 
 h1 {
-  font-size: 15px;
-  font-family:'Times New Roman', Times, serif;
-  left: 45vw;
-  position: absolute;
-}
-
-
-@media only screen and (min-width: 500px) {
-  h1:hover {
-    color: grey;
-    cursor: pointer;
-  }
- }
-
-
-
- 
- 
- 
-.zero {
-  top: 8vh;
-}
-
-.one {
-  top: 14vh;
-}
-
-@media only screen and (min-width: 500px) {
-  .one:hover {
-    color: #3d6b1f;
-  }
- }
-
-
-
-
-
-
-
-.two {
-  top: 25vh;
-}
-
-.three {
-  top: 29vh;
-}
-
-.four {
-  top: 33vh;
-}
-
-.five {
-  top: 37vh;
-}
-
-
-
-
-
-
-
-.six {
-  top: 48vh;
-}
-
-.seven {
-  top: 52vh;
-}
-
-
-
-
-
-
-
-.eight {
-  top: 62vh;
-}
-
-@media only screen and (max-width: 500px) {
-  .eight {
-    top: 59.5vh;
-  }
-}
-
-.nine {
-  top: 65.7vh;
-}
-
-.ten {
-  top: 69.5vh;
-}
-
-
-
-
-
-
-
-
-.eleven {
-  top: 78vh;
-}
-
-.twelve {
-  top: 82vh;
-}
-
-.thirteen {
-  top: 86vh;
-}
-
-.fourteen {
-  top: 90vh;
-}
-
-
-
-
-.fifteen {
-  top: 140px;
-  left: 1000px;
-  transform: rotate(90deg);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.App {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-} */
-
-
-
-.softwareCPRWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-}
-
-.softwareCPRName {
-  position: absolute;
-  left: 30px;
-}
-
-.softwareCPRName:hover {
-  color: grey;
-  cursor: pointer;
-}
-
-.softwareCPRInfo {
-  position: absolute;
-  color: black;
-  left: 186px;
-  /* top: 3px;
-  font-size: 28px; */
-}
-
-.softwareCPRLink {
-  position: absolute;
-  left: 26vw;
-  color: #a23939;
-  font-size: 5vw;
-  font-family: Arial, Helvetica, sans-serif;
-  top: -4vh;
-  z-index: -1000;
-  /* transform: rotate(20deg); */
-}
-
-@media only screen and (max-width: 800px) {
-  .softwareCPRLink {
-    left: 25vw;
-    top: 13vh;
-    font-size: 5.5vh;
-  }
-}
-
-.softwareCPRLink:hover {
-  color: grey;
-  cursor: pointer;
-}
-
-
-
-
-
-
-
-.dsigWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  background-color: #4b9b41;
-}
-
-.dsigName {
-  position: absolute;
-  left: 30px;
-  color: gold;
-}
-
-.dsigName:hover {
-  color: grey;
-  cursor: pointer;
-}
-
-.dsigInfo {
-  color: white;
   font-weight: 800;
-  top: 400px;
-  left: 69vh;
-  position: absolute;
+  font-size: 27pt;
 }
 
-
-
-
-
-
-
-
-
-
-
-.parchmentInfo {
-  color: black;
-  font-weight: 800;
-  top: 400px;
-  left: 69vh;
-  position: absolute;
+h1:hover {
+  color: #1913c9;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.whoWillSurviveWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  background-color: #f84949;
+h1:active {
+  transform: translateY(4px);
 }
 
-.title {
-  left: 15vw;
-  top: 15vh;
-  position: absolute;
+h2 {
+  font-style: italic;
+  font-weight: 200;
 }
 
-.title:hover {
-  color: #4f4f4f;
-  cursor: pointer;
+.medium {
+  margin-top: 30px;
 }
 
-.whoWillSurviveInfo {
-  left: 40vw;
-  top: 40vh;
-  position: absolute;
-}
-
-
-
-
-
-
-
-.magaWrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
+#text {
+  margin-top: 170px;
+  margin-left: 20px;
+  padding: 20px;
   background-color: white;
+  border: 2px solid black;
+  min-width: 400px;
+  max-height: 250px;
+  overflow: auto;
 }
 
-#magaName {
+#artTitle {
+  font-size: 2.5vw;
+}
+
+#artTitle:hover {
   color: black;
 }
 
-#magaName:hover {
-  color: grey;
-  cursor: pointer;
+#artTitle:active {
+  transform: none;
 }
 
-.magaTitle {
-  left: 15vw;
-  top: 15vh;
-  position: absolute;
-  color: red;
+#artist {
+  font-size: 1.5vw;
+  font-style: none;
 }
 
-.magaTitle:hover {
-  color: #4f4f4f;
-  cursor: pointer;
+#mediumText {
+  font-size: 1vw;
+  font-style: italic;
 }
 
-
-.magaInfo {
-  left: 40vw;
-  top: 40vh;
-  position: absolute;
-  color: blue;
+.singleImage {
+  max-width: 100%;
+  margin-top: 150px;
+  margin-left: 160px;
+  padding-bottom: 130px;
+  max-height: 100%;
 }
 
-
-
-
-
-
-
-
-
-.physicsTitle {
-  position: absolute;
-  right: 40vw;
-  top: 20vh;
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
+.singleImage:hover {
+  cursor: default;
 }
 
-.physicsInfo {
-  position: absolute;
-  right: 20vw;
-  bottom: 20vh;
-  text-align: center;
-  font-weight: 800;
+.singleDisplay {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+#artHeader {
+  background-color: white;
+  border: 2px solid black;
+  padding: 2px;
+  bottom: 0px;
+  left: 15px;
+}
+
+#artHeader:hover {
   color: red;
 }
 
 
 
-
-
-.calcTitle {
-  position: absolute;
-  right: 40vw;
-  top: 20vh;
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
+@media (hover: none) {
+  .about:hover { color: inherit; };
+  .website:hover { color: inherit; };
+  h1:hover { color: inherit; };
+  #artTitle:hover { color: inherit; };
 }
-
-.calcInfo {
-  position: absolute;
-  right: 20vw;
-  bottom: 20vh;
-  text-align: center;
-  font-weight: 800;
-  color: red;
-}
-
-.integrals, .lineIntegrals {
-  font-size: 3vh;
-  position: absolute;
-}
-
-.lineIntegrals {
-  top: 1vh;
-  color: red;
-}
-
-
-.integrals {
-  font-size: 5vh;
-  position: absolute;
-  right: 0vw;
-  bottom: 0vh;
-  transform: rotate(25deg);
-  color:  blue;
-}
-
-#int2 {
-  transform: rotate(0deg);
-}
-
-#int3 {
-  transform: rotate(90deg);
-}
-
-#int4 {
-  transform: rotate(30deg);
-}
-
-#int5 {
-  transform: rotate(2deg);
-}
-
-#int6 {
-  transform: rotate(120deg);
-}
-
-
-
-.info {
-  position: absolute;
-  top: 60vh;
-  left: 30vw;
-}
-
-
-
-
-
-
-
-
-
-
-.wrapper {
-  height: 100%; 
-  width: 100%;
-  position: fixed;
-  
-}
-
-.linearTitle {
-  position: absolute;
-  top: 0vh;
-  font-size: 6vh;
-  max-height: 100vh;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-.innerText {
-  color: red;
-}
-
-
-
-
-
-
-
-@media only screen and (max-width: 800px) {
-  .discreteTitle {
-    font-size: 3vw;
-  }
-}
-
-
-.discreteTitle {
-  position: absolute;
-  top: 20vh;
-  font-size: 2vh;
-  left:1vw;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.JobInfo {
-  top: 10vh;
-}
-
-.CoverLetter {
-  top: 20vh;
-}
-
-.Resume {
-  top: 30vh;
-}
-
-.SkillsList {
-  top: 40vh;
-}
-
-
-.image {
-  height: 100vh;
-}
-
-
-
-
-
-
-
-/* 
-
-.line1 {
-  width: 600px;
-  height: 0;
-  top: 20%;
-  transform: rotate(45deg);
-  border: 1px solid white;
-  position: absolute;
-}
-
-.line2 {
-  width: 600px;
-  height: 0;
-  top: 20%;
-  transform: rotate(270deg);
-  border: 1px solid white;
-  position: absolute;
-} */
-
-
-
