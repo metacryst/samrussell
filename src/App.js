@@ -91,7 +91,7 @@ function App() {
                 </h1>
                 
                 <h1 className="four" onClick={() => {
-                  window.open('http://wip--gallery.herokuapp.com/', "_blank");
+                  window.open('https://wip-gallery.samrussell.com/', "_blank");
                 }}>
                   [wip]
                 </h1>
