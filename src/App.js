@@ -85,13 +85,13 @@ function App() {
                 </h1>
                 
                 <h1 className="three" onClick={() => {
-                  window.location.href = 'http://paperclip--house.herokuapp.com/';
+                  window.open('http://paperclip--house.herokuapp.com/', "_blank");
                 }}>
                   paperclip//
                 </h1>
                 
                 <h1 className="four" onClick={() => {
-                  window.location.href = 'http://wip--gallery.herokuapp.com/';
+                  window.open('http://wip--gallery.herokuapp.com/', "_blank");
                 }}>
                   [wip]
                 </h1>
